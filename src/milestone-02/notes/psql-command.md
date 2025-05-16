@@ -88,4 +88,5 @@ revoke select on table test_table from user2;
 ---
 
 
+<span style="color:red">This text is red</span>
 
