@@ -37,6 +37,15 @@ grant all privileges on table test_table to user1;
 ```
 ---
 
+### to delete view permission
+- table name: test_table
+- user name: user2
+
+```text
+revoke select on table test_table from user2;
+```
+---
+
 ### to see everything from a table
 - table name: test_table
 - * uses for select everything
@@ -51,7 +60,7 @@ grant all privileges on table test_table to user1;
 - record name: test name
 
 ```text
- insert into test_table(name) values('test name');
+ insert into test_table(name) values('test_name');
 ```
 ---
 
