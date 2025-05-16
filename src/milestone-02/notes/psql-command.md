@@ -1,3 +1,5 @@
+## psql command
+
 ### to create a new user
 - user name: user2
 - password: 123456
@@ -41,6 +43,15 @@ grant all privileges on table test_table to user1;
 
 ```text
  select * from test_table;
+```
+---
+
+### to insert a new row / record
+- table name: test_table
+- record name: test name
+
+```text
+ insert into test_table(name) values('test name');
 ```
 ---
 
