@@ -1,4 +1,7 @@
-## psql command
+# psql command
+
+
+## insert / create command
 
 ### to create a new user
 - role/user: user2
@@ -6,6 +9,15 @@
 
 ```text
 create user user2 with encrypted password '123456';
+```
+---
+
+### to insert a new row / record
+- table: test_table
+- record: test name
+
+```text
+ insert into test_table(name) values('test_name');
 ```
 ---
 
@@ -18,12 +30,24 @@ create user user2 with encrypted password '123456';
 ```
 ---
 
-### to give view permission
+
+## permission command
+
+### to give view permission for a table
 - table: test_table
 - role/user: user2
 
 ```text
 grant select on table test_table to user2;
+```
+---
+
+### to give view permission for all tables
+- role/user: role1
+- schema: public
+
+```text
+grant select on all tables in schema public to role role1;
 ```
 ---
 
@@ -63,12 +87,5 @@ revoke select on table test_table from user2;
 ```
 ---
 
-### to insert a new row / record
-- table: test_table
-- record: test name
 
-```text
- insert into test_table(name) values('test_name');
-```
----
 
