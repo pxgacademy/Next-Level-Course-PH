@@ -1,7 +1,7 @@
 ## psql command
 
 ### to create a new user
-- user name: user2
+- role/user: user2
 - password: 123456
 
 ```text
@@ -10,8 +10,8 @@ create user user2 with encrypted password '123456';
 ---
 
 ### to switch role/user
-- role/user name: user1
-- database name: postgres
+- role/user: user1
+- database: postgres
 
 ```text
 \c postgres user1
@@ -19,27 +19,35 @@ create user user2 with encrypted password '123456';
 ---
 
 ### to give view permission
-- table name: test_table
-- user name: user2
+- table: test_table
+- role/user: user2
 
 ```text
 grant select on table test_table to user2;
 ```
 ---
 
-
-### to give all permission
-- table name: test_table
-- user name: user1
+### to give all permission of a table
+- table: test_table
+- role/user: user1
 
 ```text
 grant all privileges on table test_table to user1;
 ```
 ---
 
+### to give all permission of a database
+- rose/user: user2
+- schema: public
+
+```text
+grant all privileges on all tables in schema public to user2;
+```
+---
+
 ### to delete view permission
-- table name: test_table
-- user name: user2
+- table: test_table
+- role/user: user2
 
 ```text
 revoke select on table test_table from user2;
@@ -47,7 +55,7 @@ revoke select on table test_table from user2;
 ---
 
 ### to see everything from a table
-- table name: test_table
+- table: test_table
 - * uses for select everything
 
 ```text
@@ -56,8 +64,8 @@ revoke select on table test_table from user2;
 ---
 
 ### to insert a new row / record
-- table name: test_table
-- record name: test name
+- table: test_table
+- record: test name
 
 ```text
  insert into test_table(name) values('test_name');
