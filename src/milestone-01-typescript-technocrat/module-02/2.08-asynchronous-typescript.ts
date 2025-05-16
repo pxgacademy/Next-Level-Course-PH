@@ -3,13 +3,13 @@
 
   // simulate
   const createPromise = (): Promise<string> => {
-    return new Promise<string>((resolve, resect) => {
+    return new Promise<string>((resolve, reject) => {
       const data: string = "something";
 
       if (data) {
         resolve(data);
       } else {
-        resect("failed to load data");
+        reject("failed to load data");
       }
     });
   };
