@@ -47,7 +47,7 @@ grant select on table test_table to user2;
 - schema: public
 
 ```text
-grant select on all tables in schema public to role role1;
+grant select on all tables in schema public to role1;
 ```
 ---
 
@@ -66,6 +66,15 @@ grant all privileges on table test_table to user1;
 
 ```text
 grant all privileges on all tables in schema public to user2;
+```
+---
+
+### to give role1 permission to role3
+role3 will have every permission role1 has.
+- rose/user: role1, role3
+
+```text
+grant role1 to role3;
 ```
 ---
 
@@ -88,5 +97,5 @@ revoke select on table test_table from user2;
 ---
 
 
-<span style="color:red">This text is red</span>
+
 
