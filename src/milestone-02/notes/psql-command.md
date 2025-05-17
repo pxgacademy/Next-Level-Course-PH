@@ -130,3 +130,46 @@ revoke select on table test_table from user2;
 ---
 
 
+### FIELD VALIDATION
+### NOT NULL    
+```bash
+ CREATE TABLE new_table (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+ )
+```
+### UNIQUE    
+```bash
+ CREATE TABLE new_table (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(50) UNIQUE
+ )
+```
+### PRIMARY KEY  
+```bash
+ CREATE TABLE new_table (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL
+ )
+```
+### FOREIGN KEY  
+```bash
+ CREATE TABLE new_table (
+    id SERIAL PRIMARY KEY,
+    customer_id INTEGER REFERENCES customers(customer_id)
+ )
+```
+### DEFAULT  
+```bash
+ CREATE TABLE new_table (
+    id SERIAL PRIMARY KEY,
+    status BOOLEAN DEFAULT true
+ )
+```
+### CHECK  
+```bash
+ CREATE TABLE new_table (
+    id SERIAL PRIMARY KEY,
+    age INTEGER CHECK (age >= 18)
+ )
+```
