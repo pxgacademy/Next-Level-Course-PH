@@ -1,4 +1,5 @@
-# psql command
+# PSQL COMMANDS
+
 
 
 ## insert / create command
@@ -130,7 +131,7 @@ revoke select on table test_table from user2;
 ---
 
 
-### FIELD VALIDATION
+## FIELD VALIDATION
 ### NOT NULL    
 ```bash
  CREATE TABLE new_table (
