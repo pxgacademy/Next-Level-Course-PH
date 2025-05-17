@@ -174,3 +174,11 @@ revoke select on table test_table from user2;
     age INTEGER CHECK (age >= 18)
  )
 ```
+
+
+## ROW / RECORD INSERT
+### Single Row Insert
+```bash
+ CREATE INFO your_table (column1, column2, column3)
+ VALUES (value1, value2, value3);
+```
