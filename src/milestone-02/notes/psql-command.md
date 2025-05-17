@@ -7,7 +7,7 @@
 ### to create a new database
 - database: test
 
-```text
+```sql
 create database test;
 ```
 ---
@@ -16,7 +16,7 @@ create database test;
 - old database: test
 - new database: ph
 
-```text
+```sql
  alter database test rename to ph;
 ```
 ---
@@ -24,7 +24,7 @@ create database test;
 ### to delete database
 - database: ph
 
-```text
+```sql
  drop database ph;
 ```
 ---
@@ -33,7 +33,7 @@ create database test;
 - role/user: user2
 - password: 123456
 
-```text
+```sql
 create user user2 with encrypted password '123456';
 ```
 ---
@@ -42,7 +42,7 @@ create user user2 with encrypted password '123456';
 - table: test_table
 - record: test name
 
-```text
+```sql
  insert into test_table(name) values('test_name');
 ```
 ---
@@ -51,7 +51,7 @@ create user user2 with encrypted password '123456';
 - role/user: user1
 - database: postgres
 
-```text
+```sql
 \c postgres user1
 ```
 ---
@@ -63,7 +63,7 @@ create user user2 with encrypted password '123456';
 - table: test_table
 - role/user: user2
 
-```text
+```sql
 grant select on table test_table to user2;
 ```
 ---
@@ -72,7 +72,7 @@ grant select on table test_table to user2;
 - role/user: role1
 - schema: public
 
-```text
+```sql
 grant select on all tables in schema public to role1;
 ```
 ---
@@ -81,7 +81,7 @@ grant select on all tables in schema public to role1;
 - table: test_table
 - role/user: user1
 
-```text
+```sql
 grant all privileges on table test_table to user1;
 ```
 ---
@@ -90,7 +90,7 @@ grant all privileges on table test_table to user1;
 - rose/user: user2
 - schema: public
 
-```text
+```sql
 grant all privileges on all tables in schema public to user2;
 ```
 ---
@@ -99,7 +99,7 @@ grant all privileges on all tables in schema public to user2;
 role3 will have every permission role1 has.
 - rose/user: role1, role3
 
-```text
+```sql
 grant role1 to role3;
 ```
 ---
@@ -108,7 +108,7 @@ grant role1 to role3;
 - table: test_table
 - role/user: user2
 
-```text
+```sql
 revoke select on table test_table from user2;
 ```
 ---
@@ -117,7 +117,7 @@ revoke select on table test_table from user2;
 - table: test_table
 - * uses for select everything
 
-```text
+```sql
  select * from test_table;
 ```
 ---
@@ -125,7 +125,7 @@ revoke select on table test_table from user2;
 ## local commands
 
 ### to see all database
-```text
+```sql
  \l
 ```
 ---
@@ -133,42 +133,42 @@ revoke select on table test_table from user2;
 
 ## FIELD VALIDATION
 ### NOT NULL    
-```bash
+```sql
  CREATE TABLE new_table (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL
  )
 ```
 ### UNIQUE    
-```bash
+```sql
  CREATE TABLE new_table (
     id SERIAL PRIMARY KEY,
     email VARCHAR(50) UNIQUE
  )
 ```
 ### PRIMARY KEY  
-```bash
+```sql
  CREATE TABLE new_table (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL
  )
 ```
 ### FOREIGN KEY  
-```bash
+```sql
  CREATE TABLE new_table (
     id SERIAL PRIMARY KEY,
     customer_id INTEGER REFERENCES customers(customer_id)
  )
 ```
 ### DEFAULT  
-```bash
+```sql
  CREATE TABLE new_table (
     id SERIAL PRIMARY KEY,
     status BOOLEAN DEFAULT true
  )
 ```
 ### CHECK  
-```bash
+```sql
  CREATE TABLE new_table (
     id SERIAL PRIMARY KEY,
     age INTEGER CHECK (age >= 18)
@@ -178,19 +178,19 @@ revoke select on table test_table from user2;
 
 ## ROW / RECORD INSERT
 ### Single Row Insert
-```bash
+```sql
  INSERT INFO your_table (column1, column2, column3)
  VALUES (value1, value2, value3);
 ```
 ### Multi Row Insert
-```bash
+```sql
  INSERT INFO your_table (column1, column2, column3)
  VALUES (value1, value2, value3), (value1, value2, value3), (value1, value2, value3);
 ```
 ### Single Row Insert
-```bash
+```sql
  INSERT INFO your_table VALUES (value1, value2, value3);
  
- # Assuming the table has columns (id, name, age)
+ -- Assuming the table has columns (id, name, age)
  INSERT INFO your_table VALUES (1, 'John Doe', 25);
 ```
