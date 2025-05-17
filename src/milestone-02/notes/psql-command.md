@@ -3,6 +3,14 @@
 
 ## insert / create command
 
+### to create a new database
+- database: test
+
+```text
+create database test;
+```
+---
+
 ### to create a new user
 - role/user: user2
 - password: 123456
@@ -96,6 +104,12 @@ revoke select on table test_table from user2;
 ```
 ---
 
+## local commands
 
+### to see all database
+```text
+ \l
+```
+---
 
 
