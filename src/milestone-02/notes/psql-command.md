@@ -20,6 +20,14 @@ create database test;
 ```
 ---
 
+### to delete database
+- database: ph
+
+```text
+ drop database ph;
+```
+---
+
 ### to create a new user
 - role/user: user2
 - password: 123456
