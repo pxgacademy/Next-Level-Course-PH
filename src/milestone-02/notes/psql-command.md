@@ -179,6 +179,18 @@ revoke select on table test_table from user2;
 ## ROW / RECORD INSERT
 ### Single Row Insert
 ```bash
- CREATE INFO your_table (column1, column2, column3)
+ INSERT INFO your_table (column1, column2, column3)
  VALUES (value1, value2, value3);
+```
+### Multi Row Insert
+```bash
+ INSERT INFO your_table (column1, column2, column3)
+ VALUES (value1, value2, value3), (value1, value2, value3), (value1, value2, value3);
+```
+### Single Row Insert
+```bash
+ INSERT INFO your_table VALUES (value1, value2, value3);
+ 
+ # Assuming the table has columns (id, name, age)
+ INSERT INFO your_table VALUES (1, 'John Doe', 25);
 ```
