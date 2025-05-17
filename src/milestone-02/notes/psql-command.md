@@ -194,3 +194,29 @@ revoke select on table test_table from user2;
  -- Assuming the table has columns (id, name, age)
  INSERT INFO your_table VALUES (1, 'John Doe', 25);
 ```
+
+# ALTER
+## MODIFY TABLES
+### Single Row Insert
+```sql
+ INSERT INFO your_table (column1, column2, column3)
+ VALUES (value1, value2, value3);
+```
+### Column Insert
+```sql
+ ALTER TABLE person ALTER COLUMN age SET UNIQUE;
+```
+### Column Remove / Drop
+```sql
+ ALTER TABLE person ALTER COLUMN age DROP UNIQUE;
+```
+### Add constraint
+```sql
+ ALTER TABLE person ADD constraint unique_person_user_age UNIQUE(age);
+ ALTER TABLE person ADD constraint pk_person_user_age PRIMARY KEY(age);
+```
+### Drop / Remove constraint
+```sql
+ ALTER TABLE person DROP constraint unique_person_user_age;
+ ALTER TABLE person DROP constraint pk_person_user_age;
+```
