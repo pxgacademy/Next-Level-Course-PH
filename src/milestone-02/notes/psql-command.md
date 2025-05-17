@@ -11,6 +11,15 @@ create database test;
 ```
 ---
 
+### to rename database
+- old database: test
+- new database: ph
+
+```text
+ alter database test rename to ph;
+```
+---
+
 ### to create a new user
 - role/user: user2
 - password: 123456
