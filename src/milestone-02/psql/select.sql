@@ -81,4 +81,21 @@ SELECT * FROM students WHERE first_name LIKE '__a'; -- '__a' only 3 chr(s)
 SELECT * FROM students WHERE first_name ILIKE 'a%'; -- 'abc...%'
 
 
+
+-- LIMIT, OFFSET
+SELECT * FROM students LIMIT 5;
+SELECT * FROM students LIMIT 5 OFFSET 5;
+SELECT * FROM students ORDER BY student_id ASC LIMIT 5 OFFSET 10;
+
+
+-- delete rows
+DELETE FROM students WHERE grade = 'B' ;
+DELETE FROM students WHERE grade = 'C' AND country = 'USA' ;
+
+
+
+-- update rows
+UPDATE students SET email = 'default@mail.com' WHERE student_id = 21;
+UPDATE students SET email = 'default@mail.com' WHERE email IS NULL;
+
 SELECT * FROM students;
