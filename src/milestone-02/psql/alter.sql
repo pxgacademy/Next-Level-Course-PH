@@ -25,4 +25,8 @@ ALTER TABLE person DROP constraint unique_person_user_age
 
 
 
+-- to delete a table
+DROP Table person
 
+-- to delete everything from a table
+TRUNCATE Table person
