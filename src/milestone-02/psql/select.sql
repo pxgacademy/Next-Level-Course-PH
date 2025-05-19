@@ -55,3 +55,9 @@ SELECT COUNT (*) FROM students; -- how many rows
 SELECT max(LENGTH(first_name)) FROM students;
 
 
+SELECT * FROM students;
+SELECT * FROM students WHERE email IS NULL;
+SELECT * FROM students WHERE email IS NOT NULL;
+
+SELECT COALESCE(email, 'Not Provided') FROM students; -- set default value for null value;
+SELECT COALESCE(email, 'Not Provided') as email FROM students; -- set default value for null value;
