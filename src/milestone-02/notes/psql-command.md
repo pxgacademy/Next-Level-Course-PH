@@ -220,3 +220,11 @@ revoke select on table test_table from user2;
  ALTER TABLE person DROP constraint unique_person_user_age;
  ALTER TABLE person DROP constraint pk_person_user_age;
 ```
+### Drop / Remove all Records / Rows
+```sql
+ TRUNCATE TABLE person;
+```
+### Drop / Remove Table / Relation
+```sql
+ DROP TABLE person;
+```
