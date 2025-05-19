@@ -55,9 +55,30 @@ SELECT COUNT (*) FROM students; -- how many rows
 SELECT max(LENGTH(first_name)) FROM students;
 
 
-SELECT * FROM students;
 SELECT * FROM students WHERE email IS NULL;
 SELECT * FROM students WHERE email IS NOT NULL;
 
 SELECT COALESCE(email, 'Not Provided') FROM students; -- set default value for null value;
-SELECT COALESCE(email, 'Not Provided') as email FROM students; -- set default value for null value;
+-- set default value for null value;
+SELECT COALESCE(email, 'Not Provided') as email FROM students; 
+
+
+
+SELECT * FROM students WHERE country = 'USA' OR country = 'Canada' OR country = 'Australia';
+SELECT * FROM students WHERE country IN ('USA', 'Canada', 'Australia');
+SELECT * FROM students WHERE country NOT IN ('USA', 'Canada', 'Australia');
+SELECT * FROM students WHERE age BETWEEN 18 AND 20;
+SELECT * FROM students WHERE age BETWEEN 18 AND 20 ORDER BY age ASC;
+
+
+SELECT * FROM students WHERE first_name LIKE '%a'; -- '%abc...'
+SELECT * FROM students WHERE first_name LIKE 'A%'; -- 'abc...%'
+SELECT * FROM students WHERE first_name LIKE 'A%a'; -- 'abc...%...xyz'
+SELECT * FROM students WHERE first_name LIKE '__a%'; -- '_abc...%'
+SELECT * FROM students WHERE first_name LIKE '__a'; -- '__a' only 3 chr(s)
+
+-- ILIKE case insensitive
+SELECT * FROM students WHERE first_name ILIKE 'a%'; -- 'abc...%'
+
+
+SELECT * FROM students;

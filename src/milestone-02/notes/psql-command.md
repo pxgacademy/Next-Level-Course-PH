@@ -295,3 +295,4 @@ SELECT * FROM students WHERE email IS NOT NULL;
 SELECT COALESCE(email, 'Not Provided') FROM students; -- set default value for null value;
 SELECT COALESCE(email, 'Not Provided') as email FROM students;
 ```
+
