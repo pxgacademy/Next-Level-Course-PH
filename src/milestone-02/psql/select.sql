@@ -98,4 +98,5 @@ DELETE FROM students WHERE grade = 'C' AND country = 'USA' ;
 UPDATE students SET email = 'default@mail.com' WHERE student_id = 21;
 UPDATE students SET email = 'default@mail.com' WHERE email IS NULL;
 
+
 SELECT * FROM students;
