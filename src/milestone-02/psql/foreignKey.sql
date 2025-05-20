@@ -38,3 +38,33 @@ DROP TABLE posts;
 SELECT * FROM users;
 SELECT * FROM posts;
 
+
+
+-- JOIN
+SELECT title, username FROM posts JOIN users ON posts.user_id = users.id;
+SELECT * FROM posts JOIN users ON posts.user_id = users.id;
+SELECT posts.id FROM posts JOIN users ON posts.user_id = users.id;
+
+INSERT INTO posts(title, user_id) VALUES ('Enjoy with nothing', NULL);
+SELECT * FROM posts;
+SELECT * FROM posts JOIN users ON posts.user_id = users.id;
+
+-- LEFT JOIN
+SELECT * FROM posts LEFT JOIN users ON posts.user_id = users.id;
+SELECT * FROM users LEFT JOIN posts ON posts.user_id = users.id;
+
+-- RIGHT JOIN
+SELECT * FROM posts RIGHT JOIN users ON posts.user_id = users.id;
+SELECT * FROM users RIGHT JOIN posts ON posts.user_id = users.id;
+
+
+-- FULL JOIN
+SELECT * FROM posts FULL JOIN users ON posts.user_id = users.id;
+SELECT * FROM users FULL JOIN posts ON posts.user_id = users.id;
+
+
+-- CROSS JOIN
+SELECT * FROM posts CROSS JOIN users;
+
+-- NATURAL JOIN
+SELECT * FROM posts NATURAL JOIN users; -- it will not work properly. cause it will match column name id with id. Both table will have to two same column name.
