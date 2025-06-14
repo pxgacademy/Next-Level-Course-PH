@@ -4,6 +4,7 @@
 
 
 |JS types in TS | TS Own Types      |
+-------------------------------------
 |- Number       | - Interface       |
 |- String       | - Void            |
 |- Boolean      | - Array           |
