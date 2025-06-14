@@ -2,7 +2,7 @@
 
 
 
-```md
+
 |JS types in TS | TS Own Types      |
 |- Number       | - Interface       |
 |- String       | - Void            |
@@ -11,7 +11,7 @@
 |- Undefined    | - Enum            |
 |- Object       | - Union           |
 |- Symbol       | - Intersection    |
-```
+
 
 
 
