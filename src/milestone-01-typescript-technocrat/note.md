@@ -35,3 +35,16 @@
 - Over Engineering
 - Migration Challenge
 
+---
+
+### Primitive types and Non-Primitive types
+|Primitive  | Non Primitive |
+|-----------|---------------|
+|number     | Array         |
+|string     | Tuple         |
+|boolean    | Object        |
+|null       |               |
+|undefined  |               |
+|symbol     |               |
+
+
