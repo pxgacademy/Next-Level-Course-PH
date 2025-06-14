@@ -37,7 +37,7 @@
 
 ---
 
-### Primitive types and Non-Primitive types
+### **Primitive** types and **Non-Primitive** types
 |Primitive  | Non Primitive |
 |-----------|---------------|
 |number     | Array         |
@@ -48,3 +48,49 @@
 |symbol     |               |
 
 
+### Examples of basic TS types
+```ts
+// Basic Data Types
+const myName = "Abdullah"; // implicit data type. ts infer the type based on value
+const secondName: string = "Al Mubin"; // Explicit data type
+
+// Primitive data types
+const fullName: string = "Abdullah";
+const age: number = 25;
+const isMarried: boolean = false;
+const spouse: undefined = undefined;
+const bankBalance: null = null;
+
+// Non Primitive data types
+
+// Array
+const friends: string[] = ["Rakib", "Akib", "Sakib"];
+
+// Object
+const family: {
+  readonly thana: string; // readonly type
+  village: "Chipatoli"; // literal type
+  father: string;
+  mother?: string; // optional type
+  sibling: number;
+} = {
+  thana: "Hathazari",
+  village: "Chipatoli",
+  father: "Abdul Mannan",
+  sibling: 2,
+};
+
+type User = {
+  company: "New Company"; // literal type
+  year: 2025; // literal type
+  readonly creator: string; // readonly type, only read access
+  firstName: string;
+  middleName?: string; // optional type
+  lastName: string;
+};
+
+// tuple | tuple is an array, it maintains type of values
+const coordinates: [number, number] = [7, 19];
+const x: [string, number] = ["Abdullah", 25];
+const y: [string, number, boolean] = ["Abdullah", 25, true];
+```

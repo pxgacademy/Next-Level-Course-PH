@@ -1,5 +1,5 @@
 // Basic Data Types
-const theName = "Abdullah"; // implicit data type
+const myName = "Abdullah"; // implicit data type. ts infer the type based on value
 const secondName: string = "Al Mubin"; // Explicit data type
 
 // Primitive data types
@@ -31,3 +31,4 @@ const family: {
 // tuple | tuple is an array, it maintains type of values
 const coordinates: [number, number] = [7, 19];
 const x: [string, number] = ["Abdullah", 25];
+const y: [string, number, boolean] = ["Abdullah", 25, true];
