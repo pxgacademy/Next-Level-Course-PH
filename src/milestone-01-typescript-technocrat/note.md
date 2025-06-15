@@ -729,3 +729,121 @@
   type HasBike = CheckVehicle<"bike">;
   type HasTractor = CheckVehicle<"tractor">;
 ```
+### 💠 MAPPED | MAP TYPE
+```ts
+  const arrayOfNumbers: number[] = [1, 2, 3, 4, 5];
+
+  // we can covert number[] to string[] using map
+  const arrayOfString: string[] = arrayOfNumbers.map((num) => num.toString());
+  // arrayOfString will return ["1", "2", "3", "4"]
+
+  /*
+  type AreaNumber = {
+    height: number;
+    width: number;
+  };
+
+  type AreaString = { // typed manually | we can do in dynamically
+    height: string;
+    width: string;
+  };
+
+  // without typing manually, we will do it dynamically
+  type AreaString = {
+    [key in keyof AreaNumber]: string;
+  };
+  */
+
+  type AreaNumber = {
+    height: number;
+    width: number;
+  };
+
+  type AreaString = {
+    [key in keyof AreaNumber]: string;
+  };
+
+  type Height = AreaNumber["height"]; // look up type
+  // Height returns: number
+
+  type Area = {
+    height: string;
+    width: number;
+  };
+
+  type AreaStringGeneric<T> = {
+    [key in keyof T]: T[key];
+  };
+
+  const area: AreaStringGeneric<Area> = {
+    height: "100",
+    width: 100,
+  };
+
+  /*
+  type AreaStringGeneric<T> = {
+    [key in keyof T]: T[key];
+  };
+  here T = Area
+  T[key] = Area[height] = string
+  T[key] = Area[width] = number
+  tow times looped
+  */
+```
+### 💠 UTILITY TYPE (PICK, OMIT, REQUIRED, PARTIAL, READONLY, RECORD)
+```ts
+  type Person = {
+    name: string;
+    age: number;
+    email?: string;
+    phone: string;
+  };
+// 
+  // 🔶 PICK
+  type Name = Pick<Person, "name">;
+  // type Name = { name: string }
+
+  type NameAge = Pick<Person, "name" | "age">;
+  // type NameAge = { name: string; age: number }
+
+  // 🔶 OMIT
+  type ContactInfo = Omit<Person, "name" | "age">;
+  // type ContactInfo = { email?: string | undefined; phone: string }
+
+  // 🔶 REQUIRED
+  type PersonRequired = Required<Person>; // every key is required
+
+  // 🔶 PARTIAL
+  type PersonPartial = Partial<Person>; // every key is optional
+
+  // 🔶 READONLY
+  type PersonReadonly = Readonly<Person>; // every key is readonly, one time can assign
+
+  const person1: PersonReadonly = {
+    name: "Abul",
+    age: 50,
+    phone: "015546444",
+  };
+
+  // person1.name = "Babul"; // testing
+
+  /*
+  type MyObject = {
+    a: string;
+    b: string;
+    };
+    */
+
+  // 🔶 RECORD
+  type MyObject = Record<string, string>;
+  // type MyObject = { [x: string]: string }
+
+  const objectOne: MyObject = {
+    a: "aaa",
+    b: "bbb",
+    c: "ccc",
+  };
+
+  const emptyObject: Record<string, number> = {};
+  const emptyObject2: Record<string, unknown> = {};
+```
