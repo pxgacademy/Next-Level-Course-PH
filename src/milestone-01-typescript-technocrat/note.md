@@ -48,10 +48,9 @@
 |symbol     |               |
 
 
-### EXAMPLES OF TYPESCRIPT TYPES
+## EXAMPLES OF TYPESCRIPT TYPES
+### 💠 BASIC DATA TYPES
 ```ts
-{
-  // Basic Data Types
   const myName = "Abdullah"; // implicit data type. ts infer the type based on value
   const secondName: string = "Al Mubin"; // Explicit data type
 
@@ -84,10 +83,9 @@
   const coordinates: [number, number] = [7, 19];
   const x: [string, number] = ["Abdullah", 25];
   const y: [string, number, boolean] = ["Abdullah", 25, true];
-}
-
-{
-  // FUNCTION TYPES
+```
+### 💠 FUNCTION TYPES
+```ts
   // 🔵 NORMAL FUNCTION | 🟢 ARROW FUNCTION
 
   // explicit parameter type
@@ -116,12 +114,10 @@
   // CALLBACK FUNCTION TYPES
   const arr: number[] = [1, 4, 10];
   const newArr: number[] = arr.map((elem: number): number => elem * elem);
-}
-
-{
-  // ✅ SPREAD OPERATOR | ✅ REST OPERATOR
-
-  // learn spread operator
+```
+### 💠 SPREAD OPERATOR | 💠 REST OPERATOR
+```ts
+  // SPREAD OPERATOR
   const bros1: string[] = ["Rakib", "Sakib", "Akib"];
   const bros2: string[] = ["Sadia", "Anika", "Monika"];
 
@@ -145,7 +141,7 @@
     ...mentors2,
   };
 
-  // learn rest operator
+  // REST OPERATOR
   const greetFriends = (...friends: string[]) => {
     return friends.forEach((friend: string) => {
       `Hi ${friend}`;
@@ -153,11 +149,9 @@
   };
   const greetings = greetFriends("Abul", "Babul");
   console.log(greetings);
-}
-
-{
-  // DESTRUCTURING
-
+```
+### 💠 DESTRUCTURING
+```ts
   const student = {
     name: "Abul",
     roll: 988,
@@ -194,11 +188,9 @@
   const friends = ["Abdul", "Babul", "Monica", "ross", "rachel"];
 
   const [, b, c, ...d] = friends;
-}
-
-{
-  // TYPE ALIAS
-
+```
+### 💠 TYPE ALIAS
+```ts
   // OBJECT TYPE ALIAS
   type Student = {
     name: string;
@@ -231,65 +223,51 @@
   // FUNCTION TYPE ALIAS
   type Add = (num1: number, num2: number) => number;
   const add: Add = (num1, num2) => num1 + num2;
-  //
-}
-
+```
+### 💠 UNION TYPE | 💠 INTERSECTION TYPE
+```ts
 {
-  // UNION TYPE | INTERSECTION TYPE
-
-  {
-    // union type is like 'or' operator
-    // 💠 UNION TYPE
-    type FrontendDev = "Akib" | "Rakib";
-    type BackendDev = "Abul" | "Babul";
-
-    type Developer = FrontendDev | BackendDev;
-
-    const newDev1: FrontendDev = "Akib";
-    const newDev2: BackendDev = "Babul";
-    const newDev3: Developer = "Babul";
-
-    type User = {
-      name: string;
-      email: string;
-      gender: "Male" | "Female";
-      bloodGroup: "O+" | "A+" | "B+" | "A-";
-    };
-  }
-
-  {
-    // intersection type is like 'and' operator
-    // 💠 INTERSECTION TYPE
-    type FrontendDev = {
-      skills: string[];
-      designation: "Frontend Developer";
-    };
-
-    type BackendDev = {
-      skills: string[];
-      designation2: "Backend Developer";
-    };
-
-    type FullstackDev = FrontendDev & BackendDev;
-
-    const fullstackDev: FullstackDev = {
-      skills: ["HTML", "CSS"],
-      designation: "Frontend Developer",
-      designation2: "Backend Developer",
-    };
-  }
+  // union type is like 'or' operator
+  // 💠 UNION TYPE
+  type FrontendDev = "Akib" | "Rakib";
+  type BackendDev = "Abul" | "Babul";
+  type Developer = FrontendDev | BackendDev;
+  const newDev1: FrontendDev = "Akib";
+  const newDev2: BackendDev = "Babul";
+  const newDev3: Developer = "Babul";
+  type User = {
+    name: string;
+    email: string;
+    gender: "Male" | "Female";
+    bloodGroup: "O+" | "A+" | "B+" | "A-";
+  };
 }
-
 {
-  // 💠 TERNARY OPERATOR
-  // 💠 OPTIONAL CHAINING
-  // 💠 NULLISH COALESCING OPERATOR
-
-  // ternary operator
+  // intersection type is like 'and' operator
+  // 💠 INTERSECTION TYPE
+  type FrontendDev = {
+    skills: string[];
+    designation: "Frontend Developer";
+  };
+  type BackendDev = {
+    skills: string[];
+    designation2: "Backend Developer";
+  };
+  type FullstackDev = FrontendDev & BackendDev;
+  const fullstackDev: FullstackDev = {
+    skills: ["HTML", "CSS"],
+    designation: "Frontend Developer",
+    designation2: "Backend Developer",
+  };
+}
+```
+### 💠 TERNARY OPERATOR | 💠 OPTIONAL CHAINING | 💠 NULLISH COALESCING OPERATOR
+```ts
+  // TERNARY OPERATOR
   const age = 15;
   const isAdult = age > 18 ? "adult" : "not adult";
 
-  // optional chaining
+  // OPTIONAL CHAINING
   type User = {
     name: string;
     address: {
@@ -311,14 +289,14 @@
 
   const address = user?.address?.permanentAddress ?? "none"; // optional chaining
 
-  // nullish coalescing operator
+  // NULLISH COALESCING OPERATOR
   // null / undefined --> decision making
 
   const isAuthenticated = null;
   const result1 = isAuthenticated ?? "Guest"; // it works only for null or undefined
-}
-
-{
+```
+### 💠 NULLABLE TYPE | 💠 UNKNOWN TYPE | 💠 NEVER TYPE
+```ts
   // NULLABLE TYPE
   const searchName = (value: string | null) =>
     console.log(value ? "Searching" : "Nothing to search");
@@ -352,9 +330,9 @@
   const throwError = (msg: string): never => {
     throw new Error(msg);
   };
-}
-
-{
+```
+### 💠 TYPE ASSERTION
+```ts
   // TYPE ASSERTION
   type KgToGm = (value: string | number) => string | number | undefined;
 
@@ -374,11 +352,10 @@
   } catch (error) {
     const errorMessage = (error as CustomError).message;
   }
-}
-
-
-{
-  // 💠 TYPE ALIAS
+```
+### 💠 TYPE ALIAS | 💠 INTERFACE
+```ts
+   // TYPE ALIAS FOR OBJECT
   type User1 = {
     name: string;
     age: number;
@@ -392,7 +369,7 @@
     role: "Manager",
   };
 
-  // 💠 INTERFACE
+  // INTERFACE FOR OBJECT
   interface User2 {
     name: string;
     age: number;
@@ -408,13 +385,11 @@
     role: "Manager",
   };
 
-  // js --> object, array -> object, function -> object
-
-  // TYPE ALIAS
+  // TYPE ALIAS FOR ARRAY
   type Roll = number[];
   const rollNumber: Roll = [1, 2, 3];
 
-  // INTERFACE
+  // INTERFACE FOR ARRAY
   interface Roll2 {
     [index: number]: number;
   }
@@ -446,8 +421,4 @@
     (num1: number, num2: number): number;
   }
   const add2: Add2 = (num1, num2) => num1 + num2;
-}
-
-
-
 ```

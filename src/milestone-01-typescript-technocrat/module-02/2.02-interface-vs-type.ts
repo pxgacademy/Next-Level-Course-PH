@@ -1,5 +1,7 @@
 {
-  // 💠 TYPE ALIAS
+  // 💠 TYPE ALIAS | 💠 INTERFACE
+
+  // TYPE ALIAS FOR OBJECT
   type User1 = {
     name: string;
     age: number;
@@ -13,7 +15,7 @@
     role: "Manager",
   };
 
-  // 💠 INTERFACE
+  // INTERFACE FOR OBJECT
   interface User2 {
     name: string;
     age: number;
@@ -29,13 +31,11 @@
     role: "Manager",
   };
 
-  // js --> object, array -> object, function -> object
-
-  // TYPE ALIAS
+  // TYPE ALIAS FOR ARRAY
   type Roll = number[];
   const rollNumber: Roll = [1, 2, 3];
 
-  // INTERFACE
+  // INTERFACE FOR ARRAY
   interface Roll2 {
     [index: number]: number;
   }
