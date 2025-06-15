@@ -1,11 +1,12 @@
 {
-  // spread operator
-  // rest operator
+  // SPREAD OPERATOR | REST OPERATOR
 
   // learn spread operator
   const bros1: string[] = ["Rakib", "Sakib", "Akib"];
   const bros2: string[] = ["Sadia", "Anika", "Monika"];
-  bros1.push(...bros2);
+
+  // bros1.push(bros2); // 🔴 wrong way
+  bros1.push(...bros2); // 🟢 right way
 
   const mentors1 = {
     typescript: "Mezba",

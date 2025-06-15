@@ -1,7 +1,16 @@
 {
-  // destructuring
+  // DESTRUCTURING
 
-  // object destructuring
+  const student = {
+    name: "Abul",
+    roll: 988,
+    subject: "History",
+    present: false,
+  };
+
+  // 🟢 BASIC OBJECT DESTRUCTURING
+  const { name, roll, subject, present } = student;
+
   const user = {
     id: 3256,
     name: {
@@ -16,13 +25,15 @@
     address: "Uganda",
   };
 
+  // 🔵 COMPLEX OBJECT DESTRUCTURING
   const {
-    id,
-    name: { firstName },
+    id, // basic destructuring
+    name: { firstName }, // destructure from name key
     address: country, // name alias | store address into country variable
+    contact: { phone: call }, // destructure | name alias
   } = user;
 
-  // array destructuring
+  // 🟣 ARRAY DESTRUCTURING
   const friends = ["Abdul", "Babul", "Monica", "ross", "rachel"];
 
   const [, b, c, ...d] = friends;
