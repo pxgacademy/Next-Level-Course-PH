@@ -422,3 +422,128 @@
   }
   const add2: Add2 = (num1, num2) => num1 + num2;
 ```
+### 💠 GENERIC TYPE 💠 GENERIC TUPLE
+```ts
+  // GENERIC TYPE
+
+  type GenericArray<T> = Array<T>;
+
+  //   const rollNumber: number[] = [1, 2, 3, 4, 5];
+  //   const rollNumber: Array<number> = [1, 2, 3, 4, 5];
+  const rollNumber: GenericArray<number> = [1, 2, 3, 4, 5];
+
+  //   const mentors: string[] = ["x", "y", "z"];
+  //   const mentors: Array<string> = ["x", "y", "z"];
+  const mentors: GenericArray<string> = ["x", "y", "z"];
+
+  //   const boolArray: boolean[] = [false, true];
+  //   const boolArray: Array<boolean> = [false, true];
+  const boolArray: GenericArray<boolean> = [false, true];
+
+  // const user: { name: string; age: number }[] = [
+  //   {
+  //     name: "Abdul",
+  //     age: 50,
+  //   },
+  // ];
+
+  const user: GenericArray<{ name: string; age: number }> = [
+    {
+      name: "Abdul",
+      age: 50,
+    },
+    {
+      name: "Monika",
+      age: 35,
+    },
+  ];
+
+  interface User2 {
+    name: string;
+    age: number;
+  }
+
+  const user2: GenericArray<User2> = [
+    {
+      name: "Abdul",
+      age: 50,
+    },
+    {
+      name: "Monika",
+      age: 35,
+    },
+  ];
+
+  // GENERIC TUPLE
+
+  type GenericTuple<X, Y> = [X, Y];
+
+  const man: GenericTuple<string, string> = ["XY", "YZ"];
+
+  const men: GenericTuple<number, { name: string; email: string }> = [
+    1245,
+    { name: "Abul", email: "a@gmail.com" },
+  ];
+```
+### 💠 GENERIC INTERFACE 🔺 IMPORTANT
+```ts
+  interface Developer<X, Z = null> {
+    name: string;
+    computer: {
+      brand: string;
+      model: string;
+      releaseYear: number;
+    };
+    smartWatch: X;
+    bike?: Z;
+  }
+
+  interface WatchBrand1 {
+    brand: string;
+    model: string;
+    display: string;
+  }
+
+  const developer1: Developer<WatchBrand1> = {
+    name: "Abul",
+    computer: {
+      brand: "Dell",
+      model: "S2h",
+      releaseYear: 2011,
+    },
+    smartWatch: {
+      brand: "X",
+      model: "Y",
+      display: "OLEd",
+    },
+  };
+
+  interface WatchBrand2 {
+    brand: string;
+    model: string;
+    heartTrack: boolean;
+  }
+
+  interface BikeBrand1 {
+    model: string;
+    engineCapacity: string;
+  }
+
+  const developer2: Developer<WatchBrand2, BikeBrand1> = {
+    name: "Abul",
+    computer: {
+      brand: "Dell",
+      model: "S2h",
+      releaseYear: 2011,
+    },
+    smartWatch: {
+      brand: "Z",
+      model: "Y",
+      heartTrack: true,
+    },
+    bike: {
+      model: "Yamaha",
+      engineCapacity: "100cc",
+    },
+  };
+```

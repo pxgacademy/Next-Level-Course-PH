@@ -1,24 +1,24 @@
 {
-  // generic interface
+  // GENERIC INTERFACE
 
-  interface Developer<T, X = null> {
+  interface Developer<X, Z = null> {
     name: string;
     computer: {
       brand: string;
       model: string;
       releaseYear: number;
     };
-    smartWatch: T;
-    bike?: X;
+    smartWatch: X;
+    bike?: Z;
   }
 
-  type brandX = {
+  interface WatchBrand1 {
     brand: string;
     model: string;
     display: string;
-  };
+  }
 
-  const developer1: Developer<brandX> = {
+  const developer1: Developer<WatchBrand1> = {
     name: "Abul",
     computer: {
       brand: "Dell",
@@ -32,18 +32,18 @@
     },
   };
 
-  interface brandZ {
+  interface WatchBrand2 {
     brand: string;
     model: string;
     heartTrack: boolean;
   }
 
-  interface bikeBrand {
+  interface BikeBrand1 {
     model: string;
     engineCapacity: string;
   }
 
-  const developer2: Developer<brandZ, bikeBrand> = {
+  const developer2: Developer<WatchBrand2, BikeBrand1> = {
     name: "Abul",
     computer: {
       brand: "Dell",
@@ -60,6 +60,4 @@
       engineCapacity: "100cc",
     },
   };
-
-  //
 }

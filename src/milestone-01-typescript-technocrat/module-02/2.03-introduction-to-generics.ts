@@ -1,5 +1,5 @@
 {
-  // generic type
+  // GENERIC TYPE
 
   type GenericArray<T> = Array<T>;
 
@@ -15,7 +15,12 @@
   //   const boolArray: Array<boolean> = [false, true];
   const boolArray: GenericArray<boolean> = [false, true];
 
-  //
+  // const user: { name: string; age: number }[] = [
+  //   {
+  //     name: "Abdul",
+  //     age: 50,
+  //   },
+  // ];
 
   const user: GenericArray<{ name: string; age: number }> = [
     {
@@ -27,8 +32,6 @@
       age: 35,
     },
   ];
-
-  //
 
   interface User2 {
     name: string;
@@ -46,18 +49,14 @@
     },
   ];
 
-  //
-
-  // generic tuple
+  // GENERIC TUPLE
 
   type GenericTuple<X, Y> = [X, Y];
 
-  const man: GenericTuple<string, string> = ["Mr. X", "Mr. Y"];
+  const man: GenericTuple<string, string> = ["XY", "YZ"];
 
   const men: GenericTuple<number, { name: string; email: string }> = [
     1245,
     { name: "Abul", email: "a@gmail.com" },
   ];
-
-  //
 }
