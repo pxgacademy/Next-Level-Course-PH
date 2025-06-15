@@ -1,11 +1,11 @@
 {
-  // ternary operator
-  // optional chaining
-  // nullish coalescing operator
+  // 💠 TERNARY OPERATOR
+  // 💠 OPTIONAL CHAINING
+  // 💠 NULLISH COALESCING OPERATOR
 
   // ternary operator
   const age = 15;
-  console.log({ isAdult: age > 18 ? "adult" : "not adult" });
+  const isAdult = age > 18 ? "adult" : "not adult";
 
   // optional chaining
   type User = {
@@ -14,7 +14,7 @@
       city: string;
       road: string;
       presentAddress: string;
-      permanentAddress?: string;
+      permanentAddress?: string; // optional type
     };
   };
 
@@ -27,8 +27,7 @@
     },
   };
 
-  const permanentAddress = user?.address?.permanentAddress ?? 'none'
-  console.log(permanentAddress);
+  const address = user?.address?.permanentAddress ?? "none"; // optional chaining
 
   // nullish coalescing operator
   // null / undefined --> decision making

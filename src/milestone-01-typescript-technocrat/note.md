@@ -68,8 +68,8 @@
 
   // Object
   const family: {
-    readonly thana: string; // literal type
-    village: "Chipatoli"; // literal type
+    readonly thana: string; // readonly type
+    village: "Chipatoli"; // string literal type
     father: string;
     mother?: string; // optional type
     sibling: number;
@@ -195,6 +195,166 @@
 
   const [, b, c, ...d] = friends;
 }
+
+{
+  // TYPE ALIAS
+
+  // OBJECT TYPE ALIAS
+  type Student = {
+    name: string;
+    age: number;
+    gender: string;
+    contactNo?: string;
+    address: string;
+  };
+
+  const student1: Student = {
+    name: "Abdullah",
+    age: 25,
+    gender: "Male",
+    contactNo: "465467987",
+    address: "Bangladesh",
+  };
+
+  const student2: Student = {
+    name: "Abul",
+    age: 25,
+    gender: "Male",
+    address: "Bangladesh",
+  };
+
+  // STRING TYPE ALIAS
+  type Name = string;
+  const username: Name = "Abdullah";
+  const studentName: Name = "Abul";
+
+  // FUNCTION TYPE ALIAS
+  type Add = (num1: number, num2: number) => number;
+  const add: Add = (num1, num2) => num1 + num2;
+  //
+}
+
+{
+  // UNION TYPE | INTERSECTION TYPE
+
+  {
+    // union type is like 'or' operator
+    // 💠 UNION TYPE
+    type FrontendDev = "Akib" | "Rakib";
+    type BackendDev = "Abul" | "Babul";
+
+    type Developer = FrontendDev | BackendDev;
+
+    const newDev1: FrontendDev = "Akib";
+    const newDev2: BackendDev = "Babul";
+    const newDev3: Developer = "Babul";
+
+    type User = {
+      name: string;
+      email: string;
+      gender: "Male" | "Female";
+      bloodGroup: "O+" | "A+" | "B+" | "A-";
+    };
+  }
+
+  {
+    // intersection type is like 'and' operator
+    // 💠 INTERSECTION TYPE
+    type FrontendDev = {
+      skills: string[];
+      designation: "Frontend Developer";
+    };
+
+    type BackendDev = {
+      skills: string[];
+      designation2: "Backend Developer";
+    };
+
+    type FullstackDev = FrontendDev & BackendDev;
+
+    const fullstackDev: FullstackDev = {
+      skills: ["HTML", "CSS"],
+      designation: "Frontend Developer",
+      designation2: "Backend Developer",
+    };
+  }
+}
+
+{
+  // 💠 TERNARY OPERATOR
+  // 💠 OPTIONAL CHAINING
+  // 💠 NULLISH COALESCING OPERATOR
+
+  // ternary operator
+  const age = 15;
+  const isAdult = age > 18 ? "adult" : "not adult";
+
+  // optional chaining
+  type User = {
+    name: string;
+    address: {
+      city: string;
+      road: string;
+      presentAddress: string;
+      permanentAddress?: string; // optional type
+    };
+  };
+
+  const user: User = {
+    name: "Abdullah",
+    address: {
+      city: "ctg",
+      road: "awesome road",
+      presentAddress: "ctg road",
+    },
+  };
+
+  const address = user?.address?.permanentAddress ?? "none"; // optional chaining
+
+  // nullish coalescing operator
+  // null / undefined --> decision making
+
+  const isAuthenticated = null;
+  const result1 = isAuthenticated ?? "Guest"; // it works only for null or undefined
+}
+
+{
+  // NULLABLE TYPE
+  const searchName = (value: string | null) =>
+    console.log(value ? "Searching" : "Nothing to search");
+
+  searchName("abul");
+  searchName(null);
+
+  // UNKNOWN TYPE
+  const getSpeedInMeterPerSecond = (value: unknown): void => {
+    if (typeof value === "number") {
+      const convertedSpeed = (value * 1000) / 3600;
+      console.log(`The speed is ${convertedSpeed} ms^-1`);
+
+      //
+    } else if (typeof value === "string") {
+      const [v] = value.split(" ");
+      const convertedSpeed = (parseFloat(v) * 1000) / 3600;
+      console.log(`The speed is ${convertedSpeed} ms^-1`);
+
+      //
+    } else console.log("wrong input");
+  };
+
+  getSpeedInMeterPerSecond(1000);
+  getSpeedInMeterPerSecond("1200 kmh^-1");
+  getSpeedInMeterPerSecond(null);
+  getSpeedInMeterPerSecond([32]);
+
+  // NEVER TYPE
+  // never type | this function never return any value
+  const throwError = (msg: string): never => {
+    throw new Error(msg);
+  };
+}
+
+
 
 
 ```
