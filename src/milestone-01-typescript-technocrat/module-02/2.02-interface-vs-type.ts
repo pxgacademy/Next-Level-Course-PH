@@ -1,5 +1,5 @@
 {
-  // type
+  // 💠 TYPE ALIAS
   type User1 = {
     name: string;
     age: number;
@@ -13,7 +13,7 @@
     role: "Manager",
   };
 
-  // interface
+  // 💠 INTERFACE
   interface User2 {
     name: string;
     age: number;
@@ -29,23 +29,40 @@
     role: "Manager",
   };
 
-  // js -> object, array -> object, function -> object
+  // js --> object, array -> object, function -> object
 
-  //type
-  type Roll1 = number[];
-  const rollNumber: Roll1 = [1, 2, 3];
+  // TYPE ALIAS
+  type Roll = number[];
+  const rollNumber: Roll = [1, 2, 3];
 
-  // interface
+  // INTERFACE
   interface Roll2 {
     [index: number]: number;
   }
   const rollNumber2: Roll2 = [1, 2, 3];
 
-  // type
+  /*
+  rollNumber2: Roll2 = [1, 2, 3];
+                        ⬇  ⬇  ⬇
+        index of array  0  1  2
+                     
+  interface Roll2 { [index: number]: number }
+                       ⬇      ⬇        ⬇
+                     index  type   valueType
+                       ⬇
+                     index of the array, index will be number type
+  */
+
+  interface Friends {
+    [index: number]: string;
+  }
+  const friends: Friends = ["Abul", "Babul", "Atiqur"];
+
+  // TYPE ALIAS FOR FUNCTION
   type Add = (num1: number, num2: number) => number;
   const add: Add = (num1, num2) => num1 + num2;
 
-  // interface
+  // INTERFACE FOR FUNCTION
   interface Add2 {
     (num1: number, num2: number): number;
   }

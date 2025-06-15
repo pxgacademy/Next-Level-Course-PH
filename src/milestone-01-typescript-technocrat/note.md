@@ -354,6 +354,99 @@
   };
 }
 
+{
+  // TYPE ASSERTION
+  type KgToGm = (value: string | number) => string | number | undefined;
+
+  const kgToGm: KgToGm = (value) => {
+    if (typeof value === "string") return parseFloat(value) * 1000;
+    return `The converted value is: ${value * 1000}`;
+  };
+
+  const res1 = kgToGm(10) as number; // set return type is number
+  const res2 = kgToGm("10") as string; // set return type is string
+
+  type CustomError = {
+    message: string;
+  };
+
+  try {
+  } catch (error) {
+    const errorMessage = (error as CustomError).message;
+  }
+}
+
+
+{
+  // 💠 TYPE ALIAS
+  type User1 = {
+    name: string;
+    age: number;
+  };
+
+  type UserWithRole = User1 & { role: string };
+
+  const user1: UserWithRole = {
+    name: "Abul",
+    age: 58,
+    role: "Manager",
+  };
+
+  // 💠 INTERFACE
+  interface User2 {
+    name: string;
+    age: number;
+  }
+
+  interface UserWithRole2 extends User2 {
+    role: string;
+  }
+
+  const user2: UserWithRole2 = {
+    name: "Monika",
+    age: 25,
+    role: "Manager",
+  };
+
+  // js --> object, array -> object, function -> object
+
+  // TYPE ALIAS
+  type Roll = number[];
+  const rollNumber: Roll = [1, 2, 3];
+
+  // INTERFACE
+  interface Roll2 {
+    [index: number]: number;
+  }
+  const rollNumber2: Roll2 = [1, 2, 3];
+
+  /*
+  rollNumber2: Roll2 = [1, 2, 3];
+                        ⬇  ⬇  ⬇
+        index of array  0  1  2
+                     
+  interface Roll2 { [index: number]: number }
+                       ⬇      ⬇        ⬇
+                     index  type   valueType
+                       ⬇
+                     index of the array, index will be number type
+  */
+
+  interface Friends {
+    [index: number]: string;
+  }
+  const friends: Friends = ["Abul", "Babul", "Atiqur"];
+
+  // TYPE ALIAS FOR FUNCTION
+  type Add = (num1: number, num2: number) => number;
+  const add: Add = (num1, num2) => num1 + num2;
+
+  // INTERFACE FOR FUNCTION
+  interface Add2 {
+    (num1: number, num2: number): number;
+  }
+  const add2: Add2 = (num1, num2) => num1 + num2;
+}
 
 
 
