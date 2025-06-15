@@ -115,7 +115,7 @@
   const arr: number[] = [1, 4, 10];
   const newArr: number[] = arr.map((elem: number): number => elem * elem);
 ```
-### 💠 SPREAD OPERATOR | 💠 REST OPERATOR
+### 💠 SPREAD OPERATOR 💠 REST OPERATOR
 ```ts
   // SPREAD OPERATOR
   const bros1: string[] = ["Rakib", "Sakib", "Akib"];
@@ -224,7 +224,7 @@
   type Add = (num1: number, num2: number) => number;
   const add: Add = (num1, num2) => num1 + num2;
 ```
-### 💠 UNION TYPE | 💠 INTERSECTION TYPE
+### 💠 UNION TYPE 💠 INTERSECTION TYPE
 ```ts
 {
   // union type is like 'or' operator
@@ -261,7 +261,7 @@
   };
 }
 ```
-### 💠 TERNARY OPERATOR | 💠 OPTIONAL CHAINING | 💠 NULLISH COALESCING OPERATOR
+### 💠 TERNARY OPERATOR 💠 OPTIONAL CHAINING 💠 NULLISH COALESCING OPERATOR
 ```ts
   // TERNARY OPERATOR
   const age = 15;
@@ -295,7 +295,7 @@
   const isAuthenticated = null;
   const result1 = isAuthenticated ?? "Guest"; // it works only for null or undefined
 ```
-### 💠 NULLABLE TYPE | 💠 UNKNOWN TYPE | 💠 NEVER TYPE
+### 💠 NULLABLE TYPE 💠 UNKNOWN TYPE 💠 NEVER TYPE
 ```ts
   // NULLABLE TYPE
   const searchName = (value: string | null) =>
@@ -353,7 +353,7 @@
     const errorMessage = (error as CustomError).message;
   }
 ```
-### 💠 TYPE ALIAS | 💠 INTERFACE
+### 💠 TYPE ALIAS 💠 INTERFACE
 ```ts
    // TYPE ALIAS FOR OBJECT
   type User1 = {
