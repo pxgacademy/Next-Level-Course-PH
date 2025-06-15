@@ -1,14 +1,14 @@
 {
-  // conditional type
+  // CONDITIONAL TYPE
 
   type a = null;
   type b = undefined;
 
-  type c = a extends null ? true : false; // conditional type
+  type x = a extends null ? true : false; // conditional type
 
-  type d = a extends null ? string : number;
+  type y = a extends null ? string : number;
 
-  type e = a extends number ? number : b extends undefined ? undefined : any;
+  type z = a extends number ? number : b extends undefined ? undefined : any;
 
   type Sheikh = {
     bike: string;
@@ -16,10 +16,9 @@
     ship: string;
   };
 
-  //   type CheckVehicle<T> = T extends "bike" | "car" | "ship" ? true : false;
+  // T extends "bike" | "car" | "ship" ? true : false;
   type CheckVehicle<T> = T extends keyof Sheikh ? true : false;
 
-  type HasTractor = CheckVehicle<"bike">;
-
-  //
+  type HasBike = CheckVehicle<"bike">;
+  type HasTractor = CheckVehicle<"tractor">;
 }

@@ -1,5 +1,5 @@
 {
-  // generic constraints with keyof operator
+  // KEYOF OPERATOR
 
   interface Vehicle {
     bike: string;
@@ -8,30 +8,32 @@
   }
 
   type Owner = "bike" | "car" | "ship";
-  type Owner2 = keyof Vehicle;
+  type Owner2 = keyof Vehicle; // getting keys of Vehicle, like: "bike" | "car" | "ship"
 
   const person1: Owner = "bike";
-  const person2: Owner2 = "bike";
+  const person2: Owner2 = "car";
 
-  //
-
-  //   function getValue(obj: object, key: string) {
-  //     return obj[key];
-  //   }
-
-  function getValue<X, Z extends keyof X>(obj: X, key: Z) {
-    return obj[key];
-  }
-
-  const user: {
+  interface User {
     name: string;
     email: string;
-  } = {
+  }
+
+  const user: User = {
     name: "Abdul",
     email: "abul@babul.com",
   };
 
-  const value = getValue(user, "name");
+  /*
+  function getPropertyValue(obj: object, key: string) {
+    return obj[key];
+  }
+    
+  const value = getPropertyValue(user, "name");
+  */
 
-  //
+  function getPropertyValue<X, Z extends keyof X>(obj: X, key: Z) {
+    return obj[key];
+  }
+
+  const value = getPropertyValue(user, "name");
 }

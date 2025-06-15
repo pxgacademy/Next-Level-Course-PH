@@ -1,11 +1,14 @@
 {
-  // function with generic
+  // GENERIC FOR FUNCTION
 
-  // const createArray = (param: string): string[] => {
-  //     return [param]
-  // }
-  // const res1 = createArray('Ban')
+  {
+    const createArray = (param: string): string[] => {
+      return [param];
+    };
+    const res1 = createArray("Ban");
+  }
 
+  // T is like a variable
   const createArray = <T>(param: T): T[] => {
     return [param];
   };
@@ -24,7 +27,7 @@
   }
   const res5 = createArray<User>({ name: "abul", age: 50 });
 
-  // Tuple
+  // TUPLE
 
   const createArrayWithTuple = <T, Q>(param1: T, param2: Q): [T, Q] => {
     return [param1, param2];
@@ -48,6 +51,4 @@
     name: "Abul",
     age: 50,
   });
-
-  //
 }

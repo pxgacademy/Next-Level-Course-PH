@@ -1,13 +1,13 @@
 {
-  // constraints
+  // CONSTRAINTS
 
-  interface mustNeeded {
+  interface MustNeeded {
     id: number;
     name: string;
     age: number;
   }
 
-  const addCourse = <T extends mustNeeded>(student: T) => {
+  const addCourse = <T extends MustNeeded>(student: T) => {
     const course: string = "Next Level Web Development";
 
     return { ...student, course };
@@ -27,5 +27,10 @@
     email: "abul@example.com",
   });
 
-  //
+  const student2 = addCourse({
+    id: 520,
+    name: "Abul",
+    age: 50,
+    email: "abul@example.com",
+  });
 }

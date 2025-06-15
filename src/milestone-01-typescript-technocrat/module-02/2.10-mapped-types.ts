@@ -1,5 +1,5 @@
 {
-  // mapped types
+  // MAPPED TYPE
 
   const arrayOfNumbers: number[] = [1, 2, 3, 4, 5];
 

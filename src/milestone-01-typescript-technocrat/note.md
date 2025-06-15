@@ -485,7 +485,7 @@
     { name: "Abul", email: "a@gmail.com" },
   ];
 ```
-### 💠 GENERIC INTERFACE 🔺 IMPORTANT
+### 💠 GENERIC INTERFACE ❗ IMPORTANT
 ```ts
   interface Developer<X, Z = null> {
     name: string;
@@ -546,4 +546,186 @@
       engineCapacity: "100cc",
     },
   };
+```
+### 💠 GENERIC FOR FUNCTION
+```ts
+  {
+    const createArray = (param: string): string[] => {
+      return [param];
+    };
+    const res1 = createArray("Ban");
+  }
+
+  const createArray = <T>(param: T): T[] => { // T is like a variable
+    return [param];
+  };
+
+  const res1 = createArray<string>("Ban");
+  const res2 = createArray<boolean>(false);
+  const res3 = createArray<object>({});
+  const res4 = createArray<{ name: string; age: number }>({
+    name: "abul",
+    age: 50,
+  });
+
+  interface User {
+    name: string;
+    age: number;
+  }
+  const res5 = createArray<User>({ name: "abul", age: 50 });
+
+  // TUPLE
+
+  const createArrayWithTuple = <T, Q>(param1: T, param2: Q): [T, Q] => {
+    return [param1, param2];
+  };
+
+  const res10 = createArrayWithTuple<string, number>("Abul", 50);
+  const res11 = createArrayWithTuple<string, User>("user", {
+    name: "Abul",
+    age: 50,
+  });
+
+  //
+
+  const addCourse = <T>(student: T) => {
+    const course: string = "Next Level Web Development";
+
+    return { ...student, course };
+  };
+
+  const student1 = addCourse<{ name: string; age: number }>({
+    name: "Abul",
+    age: 50,
+  });
+```
+### 💠 KEYOF OPERATOR
+```ts
+  interface Vehicle {
+    bike: string;
+    car: string;
+    ship: string;
+  }
+
+  type Owner = "bike" | "car" | "ship";
+  type Owner2 = keyof Vehicle; // getting keys of Vehicle, like: "bike" | "car" | "ship"
+
+  const person1: Owner = "bike";
+  const person2: Owner2 = "car";
+
+  interface User {
+    name: string;
+    email: string;
+  }
+
+  const user: User = {
+    name: "Abdul",
+    email: "abul@babul.com",
+  };
+
+  /*
+  function getPropertyValue(obj: object, key: string) {
+    return obj[key];
+  }
+    
+  const value = getPropertyValue(user, "name");
+  */
+
+  function getPropertyValue<X, Z extends keyof X>(obj: X, key: Z) {
+    return obj[key];
+  }
+
+  const value = getPropertyValue(user, "name");
+```
+### 💠 ASYNCHRONOUS TYPESCRIPT | PROMISE
+```ts
+  // SIMULATE
+  {
+    const createPromise = (data?: string): Promise<string> => {
+      return new Promise<string>((resolve, reject) => {
+        if (data) resolve(data);
+        else reject("failed to load data");
+      });
+    };
+
+    // calling created promise function
+    const showData = async () => {
+      const res1: string = await createPromise("something");
+      const res2: string = await createPromise();
+      console.log({ res1, res2 });
+    };
+
+    showData();
+  }
+
+  {
+    interface User {
+      name: string;
+      email: string;
+      isAdmin: boolean;
+    }
+
+    const user = {
+      name: "Abul",
+      email: "abul@mail.com",
+      isAdmin: false,
+    };
+
+    const createPromise = (data?: boolean): Promise<User | string> => {
+      return new Promise<User | string>((resolve, reject) => {
+        if (data) resolve(user);
+        else reject("failed to load data");
+      });
+    };
+
+    // calling created promise function
+    const showData = async () => {
+      const res1: User | string = await createPromise(true);
+      const res2: User | string = await createPromise();
+      console.log({ res1, res2 });
+    };
+
+    showData();
+  }
+
+  //
+
+  interface ToDo {
+    id: number;
+    userId: number;
+    title: string;
+    completed: boolean;
+  }
+
+  const getToDo = async (): Promise<ToDo> => {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/todos/1"
+    );
+    const data = await response.json();
+    return data;
+  };
+
+  const todo = getToDo();
+  console.log(todo);
+```
+### 💠 CONDITIONAL TYPE
+```ts
+  type a = null;
+  type b = undefined;
+
+  type x = a extends null ? true : false; // conditional type
+  type y = a extends null ? string : number;
+  type z = a extends number ? number : b extends undefined ? undefined : any;
+
+  type Sheikh = {
+    bike: string;
+    car: string;
+    ship: string;
+  };
+
+  // T extends "bike" | "car" | "ship" ? true : false;
+  type CheckVehicle<T> = T extends keyof Sheikh ? true : false;
+
+  type HasBike = CheckVehicle<"bike">;
+  type HasTractor = CheckVehicle<"tractor">;
 ```
