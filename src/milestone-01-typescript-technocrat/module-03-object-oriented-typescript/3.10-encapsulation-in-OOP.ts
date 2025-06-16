@@ -1,5 +1,5 @@
 {
-  // encapsulation in OOP
+  // ENCAPSULATION in OOP
 
   class BankAccount {
     public readonly id: number; // only can read access from anywhere
@@ -29,14 +29,16 @@
     private oldBalance(): number {
       return this._oldBalance;
     }
+
+    getOldBalance() {
+      return this.oldBalance();
+    }
   }
 
   const account1 = new BankAccount(123, "Person1", 100000, 100000);
 
   account1.addDeposit(1000);
   account1.withdraw(2000);
-
-  //
 
   class StudentAccount extends BankAccount {
     private rate: number;
