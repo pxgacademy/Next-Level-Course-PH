@@ -30,7 +30,8 @@ The connection is called- TCP/IP socket connection  // TCP - transmission contro
 
 
                                            HTTP REQUEST
-Client______________________________________➡_______________________________________Server              METHOD          Request Headers                          Request Body
+Client______________________________________➡_______________________________________Server
+       METHOD          Request Headers                          Request Body
          ⬇                    ⬇                                       ⬇
         GET        host    : web.example.com                   ----------------
         POST       accept-encoding: gzip, deflate, br, zstd     --------------
