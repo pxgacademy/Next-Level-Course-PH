@@ -25,8 +25,25 @@ https://   135.56.195.321   :869
 protocol     IP address   PORT number
 
 domain name goes to DNS server and takes the IP address,
-then goes to server and takes necessary returns
+then goes to server and takes necessary response
 The connection is called- TCP/IP socket connection  // TCP - transmission control protocol
+
+
+                                           HTTP REQUEST
+Client______________________________________➡_______________________________________Server              METHOD          Request Headers                          Request Body
+         ⬇                    ⬇                                       ⬇
+        GET        host    : web.example.com                   ----------------
+        POST       accept-encoding: gzip, deflate, br, zstd     --------------
+        PUT
+        PATCH
+        DELETE
+
+Client______________________________________⬅_______________________________________Server       
+      Status Code & Message       Response Headers                      Request Body
+               ⬇                          ⬇                                  ⬇
+            200 OK        Access-Control-Allow-Credentials: true       ----------------
+            400               Content-Type: text/plain                  --------------    
+
 
 */
 ```
