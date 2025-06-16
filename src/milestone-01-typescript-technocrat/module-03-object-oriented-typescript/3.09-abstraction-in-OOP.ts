@@ -1,6 +1,7 @@
 {
-  // abstraction : 1. interface 2. abstract
+  // ABSTRACTION: 1. INTERFACE 2. ABSTRACT
 
+  // INTERFACE
   interface Vehicle1 {
     name: string;
     model: number;
@@ -20,7 +21,7 @@
     move(): void;
   }
 
-  // when class takes interface, Vehicle1
+  // when class takes interface, Vehicle2
   class Car1 implements Vehicle2 {
     startEngine(): void {
       console.log("I am starting the engine");
@@ -42,7 +43,7 @@
   const toyotaCar = new Car1();
   toyotaCar.startEngine();
 
-  // abstract class
+  // ABSTRACT
   abstract class Car {
     abstract startEngine(): void;
     abstract stopEngine(): void;

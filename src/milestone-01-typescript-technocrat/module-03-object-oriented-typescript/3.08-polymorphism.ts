@@ -1,5 +1,5 @@
 {
-  // Polymorphism
+  // POLYMORPHISM
 
   class Person {
     getSleep() {
@@ -23,18 +23,16 @@
     param.getSleep();
   };
 
-  const person1 = new Person();
-  const person2 = new Student();
-  const person3 = new Developer();
+  const person = new Person();
+  const student = new Student();
+  const developer = new Developer();
 
-  //   getSleepingHr(person1);
-  //   getSleepingHr(person2);
-  //   getSleepingHr(person3);
+  getSleepingHr(person);
+  getSleepingHr(student);
+  getSleepingHr(developer);
 
-  //
-}
+  //-----------------------------------------------
 
-{
   class Shape {
     getArea(): number {
       return 0;
@@ -42,11 +40,8 @@
   }
 
   class Circle extends Shape {
-    radius: number;
-
-    constructor(radius: number) {
+    constructor(public radius: number) {
       super();
-      this.radius = radius;
     }
 
     getArea(): number {
@@ -55,13 +50,8 @@
   }
 
   class Rectangle extends Shape {
-    height: number;
-    width: number;
-
-    constructor(height: number, width: number) {
+    constructor(public height: number, public width: number) {
       super();
-      this.height = height;
-      this.width = width;
     }
 
     getArea(): number {
@@ -77,7 +67,7 @@
   const shape2 = new Circle(10);
   const shape3 = new Rectangle(13, 17);
 
-  getShapeArea(shape1)
-  getShapeArea(shape2)
-  getShapeArea(shape3)
+  getShapeArea(shape1);
+  getShapeArea(shape2);
+  getShapeArea(shape3);
 }

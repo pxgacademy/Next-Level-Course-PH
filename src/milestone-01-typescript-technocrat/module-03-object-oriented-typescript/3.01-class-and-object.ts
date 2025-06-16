@@ -1,5 +1,5 @@
 {
-  // OOP - class
+  // OOP - CLASS
 
   class Animal {
     name: string;
@@ -17,8 +17,10 @@
     }
   }
   const cat = new Animal("Catty", "Cat", "Mew Mew");
+  cat.makeSound();
 
   // parameter properties
+  // if you use parameter properties, compiler set the types and initialize the values
   class Animal2 {
     constructor(
       public name: string,
@@ -32,6 +34,5 @@
   }
 
   const catty = new Animal2("Catty", "Cat", "Mew Mew");
-
-  //
+  catty.makeSound();
 }

@@ -1,5 +1,6 @@
 {
-  // access modifiers // public / private / protected
+  // ACCESS MODIFIERS
+  // public / private / protected
 
   class BankAccount {
     public readonly id: number; // only can read access from anywhere
@@ -31,13 +32,6 @@
     }
   }
 
-  const account1 = new BankAccount(123, "Person1", 100000, 100000);
-
-  account1.addDeposit(1000);
-  account1.withdraw(2000);
-
-  //
-
   class StudentAccount extends BankAccount {
     private rate: number;
     constructor(id: number, name: string, balance: number, rate: number) {
@@ -51,5 +45,12 @@
     }
   }
 
-  //
+  const account1 = new BankAccount(123, "Person1", 100000, 0);
+
+  account1.addDeposit(1000);
+  account1.withdraw(2000);
+  account1.oldBalance();
+
+  const studentAccount = new StudentAccount(133, "Person1", 100000, 0.06);
+  studentAccount.oldBalance();
 }

@@ -1,8 +1,7 @@
 {
-  // type guards
+  // TYPE GUARDS
 
-  // typeof -> type guard
-
+  // TYPEOF GUARDS
   type Alphanumeric = string | number;
 
   const add = (param1: Alphanumeric, param2: Alphanumeric): Alphanumeric => {
@@ -11,10 +10,7 @@
     else return param1.toString() + param2.toString();
   };
 
-  //
-
-  // in guard
-
+  // IN GUARDS
   type NormalUser = {
     name: string;
   };
@@ -25,9 +21,7 @@
   };
 
   const getUser = (user: NormalUser | AdminUser) => {
-    if ("role" in user) console.log(`Name is: ${user.name}, role is: ${user.role}`);
-    else console.log(`Name is: ${user.name}`);
+    if ("role" in user) return `Name is: ${user.name}, role is: ${user.role}`;
+    else return `Name is: ${user.name}`;
   };
-
-  //
 }

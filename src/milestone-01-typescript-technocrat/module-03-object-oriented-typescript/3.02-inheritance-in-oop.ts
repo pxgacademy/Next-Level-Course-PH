@@ -1,6 +1,7 @@
 {
-  // OOP - inheritance
+  // OOP - INHERITANCE
 
+  /*
   class Parent {
     name: string;
     age: number;
@@ -16,16 +17,25 @@
       console.log(`${this.name} sleeps for ${numberOfHr}`);
     }
   }
+  */
 
-  //
+  class Parent {
+    constructor(
+      public name: string,
+      public age: number,
+      public address: string
+    ) {}
+
+    getSleep(numberOfHr: number) {
+      console.log(`${this.name} sleeps for ${numberOfHr}`);
+    }
+  }
 
   class Student extends Parent {
     constructor(name: string, age: number, address: string) {
       super(name, age, address);
     }
   }
-
-  //
 
   class Teacher extends Parent {
     designation: string;
@@ -47,6 +57,4 @@
 
   const student1 = new Student("Monika", 25, "Ctg");
   const teacher1 = new Teacher("Abul", 50, "Ctg", "General Teacher");
-
-  //
 }

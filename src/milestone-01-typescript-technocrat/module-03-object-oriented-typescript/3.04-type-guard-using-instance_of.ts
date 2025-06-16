@@ -1,14 +1,8 @@
 {
-  // instanceof guard
+  // INSTANCEOF GUARD
 
   class Animal {
-    name: string;
-    species: string;
-
-    constructor(name: string, species: string) {
-      this.name = name;
-      this.species = species;
-    }
+    constructor(public name: string, public species: string) {}
 
     makeSound() {
       console.log("I can make sound");
@@ -47,11 +41,11 @@
   getAnimal(dog);
   getAnimal(cat);
 
-  // smart way of handling
-
+  // smart way of handling instanceof using arrow function
   const isDog = (animal: Animal): animal is Dog => animal instanceof Dog;
   const isCat = (animal: Animal): animal is Cat => animal instanceof Cat;
 
+  // type narrowing
   const getAnimal2 = (animal: Animal) => {
     if (isDog(animal)) animal.makeBark();
     else if (isCat(animal)) animal.makeMew();
@@ -60,6 +54,5 @@
 
   getAnimal2(dog);
   getAnimal2(cat);
-
   //
 }

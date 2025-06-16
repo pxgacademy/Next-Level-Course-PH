@@ -868,3 +868,454 @@ The style used to write and organize code.
 - **POLYMORPHISM**
 - **ABSTRACTION**
 - **ENCAPSULATION**
+
+---
+### 💠 OOP - CLASS
+```ts
+  class Animal {
+    name: string;
+    species: string;
+    sound: string;
+
+    constructor(name: string, species: string, sound: string) {
+      this.name = name;
+      this.species = species;
+      this.sound = sound;
+    }
+
+    makeSound() {
+      console.log(`The ${this.name} speak ${this.sound}`);
+    }
+  }
+  const cat = new Animal("Catty", "Cat", "Mew Mew");
+  cat.makeSound();
+
+  // parameter properties
+  // if you use parameter properties, compiler set the types and initialize the values
+  class Animal2 {
+    constructor(
+      public name: string,
+      public species: string,
+      public sound: string
+    ) {}
+
+    makeSound() {
+      console.log(`The ${this.name} speak ${this.sound}`);
+    }
+  }
+
+  const catty = new Animal2("Catty", "Cat", "Mew Mew");
+  catty.makeSound();
+```
+### 💠 OOP - INHERITANCE
+```ts
+  /*
+  class Parent {
+    name: string;
+    age: number;
+    address: string;
+
+    constructor(name: string, age: number, address: string) {
+      this.name = name;
+      this.age = age;
+      this.address = address;
+    }
+
+    getSleep(numberOfHr: number) {
+      console.log(`${this.name} sleeps for ${numberOfHr}`);
+    }
+  }
+  */
+
+  class Parent {
+    constructor(
+      public name: string,
+      public age: number,
+      public address: string
+    ) {}
+
+    getSleep(numberOfHr: number) {
+      console.log(`${this.name} sleeps for ${numberOfHr}`);
+    }
+  }
+
+  class Student extends Parent {
+    constructor(name: string, age: number, address: string) {
+      super(name, age, address);
+    }
+  }
+
+  class Teacher extends Parent {
+    designation: string;
+
+    constructor(
+      name: string,
+      age: number,
+      address: string,
+      designation: string
+    ) {
+      super(name, age, address);
+      this.designation = designation;
+    }
+
+    takeClass(numberOfClass: number) {
+      console.log(`${this.name} takes ${numberOfClass} class(s)`);
+    }
+  }
+
+  const student1 = new Student("Monika", 25, "Ctg");
+  const teacher1 = new Teacher("Abul", 50, "Ctg", "General Teacher");
+```
+### 💠 TYPE GUARDS
+```ts
+  // TYPEOF GUARDS
+  type Alphanumeric = string | number;
+
+  const add = (param1: Alphanumeric, param2: Alphanumeric): Alphanumeric => {
+    if (typeof param1 === "number" && typeof param2 === "number")
+      return param1 + param2;
+    else return param1.toString() + param2.toString();
+  };
+
+  // IN GUARDS
+  type NormalUser = {
+    name: string;
+  };
+
+  type AdminUser = {
+    name: string;
+    role: "admin";
+  };
+
+  const getUser = (user: NormalUser | AdminUser) => {
+    if ("role" in user) return `Name is: ${user.name}, role is: ${user.role}`;
+    else return `Name is: ${user.name}`;
+  };
+```
+### 💠 INSTANCEOF GUARD
+```ts
+  class Animal {
+    constructor(public name: string, public species: string) {}
+
+    makeSound() {
+      console.log("I can make sound");
+    }
+  }
+
+  class Dog extends Animal {
+    constructor(name: string, species: string) {
+      super(name, species);
+    }
+
+    makeBark() {
+      console.log("I can bark");
+    }
+  }
+
+  class Cat extends Animal {
+    constructor(name: string, species: string) {
+      super(name, species);
+    }
+
+    makeMew() {
+      console.log("I can mewing");
+    }
+  }
+
+  const getAnimal = (animal: Animal) => {
+    if (animal instanceof Dog) animal.makeBark();
+    else if (animal instanceof Cat) animal.makeMew();
+    else animal.makeSound();
+  };
+
+  const dog = new Dog("The dog", "Gew");
+  const cat = new Dog("The cat", "Mew");
+
+  getAnimal(dog);
+  getAnimal(cat);
+
+  // smart way of handling instanceof using arrow function
+  const isDog = (animal: Animal): animal is Dog => animal instanceof Dog;
+  const isCat = (animal: Animal): animal is Cat => animal instanceof Cat;
+
+  // type narrowing
+  const getAnimal2 = (animal: Animal) => {
+    if (isDog(animal)) animal.makeBark();
+    else if (isCat(animal)) animal.makeMew();
+    else animal.makeSound();
+  };
+
+  getAnimal2(dog);
+  getAnimal2(cat);
+```
+### 💠 ACCESS MODIFIERS (public, private, protected, readonly)
+```ts
+  class BankAccount {
+    public readonly id: number; // only can read access from anywhere
+    public name: string; // can access from anywhere
+    private _oldBalance: number; // only can access into this class
+    protected _balance: number; // only can access into this class and child class
+
+    constructor(id: number, name: string, balance: number, oldBalance: number) {
+      this.id = id;
+      this.name = name;
+      this._oldBalance = oldBalance;
+      this._balance = balance;
+    }
+
+    addDeposit(amount: number): number {
+      this._oldBalance = this._balance;
+      this._balance = this._balance + amount;
+      return this._balance;
+    }
+
+    withdraw(amount: number): number {
+      this._oldBalance = this._balance;
+      this._balance = this._balance - amount;
+      return this._balance;
+    }
+
+    oldBalance(): number {
+      return this._oldBalance;
+    }
+  }
+
+  class StudentAccount extends BankAccount {
+    private rate: number;
+    constructor(id: number, name: string, balance: number, rate: number) {
+      super(id, name, balance, balance);
+      this.rate = rate;
+    }
+
+    addFee(): number | string {
+      if (this.rate <= 0.05) return this._balance * this.rate;
+      return "Enter a valid amount";
+    }
+  }
+
+  const account1 = new BankAccount(123, "Person1", 100000, 0);
+
+  account1.addDeposit(1000);
+  account1.withdraw(2000);
+  account1.oldBalance();
+
+  const studentAccount = new StudentAccount(133, "Person1", 100000, 0.06);
+  studentAccount.oldBalance();
+```
+### 💠 GETTER and SETTER
+```ts
+  class BankAccount {
+    public readonly id: number; // only can read access from anywhere
+    public name: string; // can access from anywhere
+    private _oldBalance: number; // only can access into this class
+    protected _balance: number; // only can access into this class and child class
+
+    constructor(id: number, name: string, balance: number, oldBalance: number) {
+      this.id = id;
+      this.name = name;
+      this._oldBalance = oldBalance;
+      this._balance = balance;
+    }
+
+    /*
+    oldBalance(): number {
+        return this._oldBalance;
+    }
+    */
+
+    // getter
+    get oldBalance() {
+      return this._oldBalance;
+    }
+
+    /*
+    addDeposit(amount: number): number {
+      this._oldBalance = this._balance;
+      this._balance = this._balance + amount;
+      return this._balance;
+    }
+    */
+
+    // setter
+    set addDeposit(amount: number) {
+      this._oldBalance = this._balance;
+      this._balance = this._balance + amount;
+    }
+
+    withdraw(amount: number): number {
+      this._oldBalance = this._balance;
+      this._balance = this._balance - amount;
+      return this._balance;
+    }
+  }
+
+  const account1 = new BankAccount(123, "Person1", 100000, 100000);
+  account1.addDeposit = 5000;
+  console.log(account1.oldBalance);
+```
+### 💠 STATIC in OOP
+```ts
+  class Counter {
+    static count: number = 0;
+
+    increment() {
+      return (Counter.count = Counter.count + 1);
+    }
+
+    static decrement() {
+      return (Counter.count = Counter.count - 1);
+    }
+  }
+
+  const instance1 = new Counter();
+  instance1.increment();
+
+  const instance2 = new Counter();
+  instance2.increment();
+
+  Counter.decrement();
+```
+### 💠 POLYMORPHISM
+```ts
+  class Person {
+    getSleep() {
+      console.log("I sleep for 8 hr");
+    }
+  }
+
+  class Student extends Person {
+    getSleep() {
+      console.log("I sleep for 7 hr");
+    }
+  }
+
+  class Developer extends Person {
+    getSleep() {
+      console.log("I sleep for 6 hr");
+    }
+  }
+
+  const getSleepingHr = (param: Person) => {
+    param.getSleep();
+  };
+
+  const person = new Person();
+  const student = new Student();
+  const developer = new Developer();
+
+  getSleepingHr(person);
+  getSleepingHr(student);
+  getSleepingHr(developer);
+
+  //-----------------------------------------------
+
+  class Shape {
+    getArea(): number {
+      return 0;
+    }
+  }
+
+  class Circle extends Shape {
+    constructor(public radius: number) {
+      super();
+    }
+
+    getArea(): number {
+      return Math.PI * this.radius * this.radius;
+    }
+  }
+
+  class Rectangle extends Shape {
+    constructor(public height: number, public width: number) {
+      super();
+    }
+
+    getArea(): number {
+      return this.height * this.width;
+    }
+  }
+
+  const getShapeArea = (param: Shape) => {
+    console.log(param.getArea());
+  };
+
+  const shape1 = new Shape();
+  const shape2 = new Circle(10);
+  const shape3 = new Rectangle(13, 17);
+
+  getShapeArea(shape1);
+  getShapeArea(shape2);
+  getShapeArea(shape3);
+```
+### 💠 ABSTRACTION: 1. INTERFACE 2. ABSTRACT
+```ts
+  // INTERFACE
+  interface Vehicle1 {
+    name: string;
+    model: number;
+  }
+
+  // when object takes interface, Vehicle1
+  const car: Vehicle1 = {
+    name: "Toyota",
+    model: 1983,
+  };
+
+  // ==========================
+
+  interface Vehicle2 {
+    startEngine(): void;
+    stopEngine(): void;
+    move(): void;
+  }
+
+  // when class takes interface, Vehicle2
+  class Car1 implements Vehicle2 {
+    startEngine(): void {
+      console.log("I am starting the engine");
+    }
+
+    stopEngine(): void {
+      console.log("I stope the engine");
+    }
+
+    move(): string {
+      return "I am moving the car";
+    }
+
+    test() {
+      console.log("I am testing");
+    }
+  }
+
+  const toyotaCar = new Car1();
+  toyotaCar.startEngine();
+
+  // ABSTRACT
+  abstract class Car {
+    abstract startEngine(): void;
+    abstract stopEngine(): void;
+    abstract move(): void;
+    test() {
+      console.log("I am testing");
+    }
+  }
+
+  class ToyotaCar extends Car {
+    startEngine(): void {
+      console.log("I am starting the engine");
+    }
+
+    stopEngine(): void {
+      console.log("I stope the engine");
+    }
+
+    move(): string {
+      return "I am moving the car";
+    }
+  }
+
+  const toyotaCar2 = new ToyotaCar();
+  toyotaCar2.startEngine();
+  toyotaCar2.test();
+```
