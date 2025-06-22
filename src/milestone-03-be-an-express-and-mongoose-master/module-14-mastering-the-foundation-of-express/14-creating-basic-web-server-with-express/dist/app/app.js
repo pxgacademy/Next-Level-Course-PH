@@ -4,16 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
+const route_todos_1 = __importDefault(require("./todos/route.todos"));
 const app = (0, express_1.default)();
-const todoFilePath = path_1.default.resolve(__dirname, "../../db/todo.json");
+app.use(express_1.default.json());
+app.use("/todos", route_todos_1.default);
 app.get("/", (req, res) => {
-    console.log(__dirname);
     res.send("I am working from module 14.02");
-});
-app.get("/todos", (req, res) => {
-    const data = fs_1.default.readFileSync(todoFilePath, { encoding: "utf-8" });
-    res.status(200).json(data);
 });
 exports.default = app;
