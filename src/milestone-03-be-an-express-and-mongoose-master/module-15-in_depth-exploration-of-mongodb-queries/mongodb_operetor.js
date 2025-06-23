@@ -65,7 +65,7 @@ db.test.find({ age: { $type: "string" } });
 db.test.find({ friends: { $type: "array" } });
 db.test.find({ company: { $type: "null" } });
 
-// $size // only use for array
+// $size: only use for array
 db.test.find({ friends: { $size: 0 } }); // size can be more than 0
 
 // here interests is an array and Cooking is 2no index
@@ -108,14 +108,14 @@ db.test
   })
   .project({ skills: 1 });
 
-// $set // update data for primitive data.
+// $set: update data for primitive data.
 db.test.updateOne(
   { _id: ObjectId("6406ad63fc13ae5a40000065") },
   { $set: { age: 25 } }
 );
 
 // $addToSet doesn't make duplicate
-// $addToSet // add value into an array
+// $addToSet: add value into an array
 db.test.updateOne(
   { _id: ObjectId("6406ad63fc13ae5a40000065") },
   {
@@ -125,7 +125,7 @@ db.test.updateOne(
   }
 );
 
-// $addToSet + $each // add multiple values into an array
+// $addToSet + $each: add multiple values into an array
 db.test.updateOne(
   { _id: ObjectId("6406ad63fc13ae5a40000065") },
   {
@@ -137,7 +137,7 @@ db.test.updateOne(
   }
 );
 
-// $push // push also add value into an array, but push make duplicate
+// $push: push also add value into an array, but push make duplicate
 db.test.updateOne(
   { _id: ObjectId("6406ad63fc13ae5a40000065") },
   {
@@ -149,7 +149,7 @@ db.test.updateOne(
   }
 );
 
-// $set // update object
+// $set: update object
 db.test.updateOne(
   { _id: ObjectId("6406ad63fc13ae5a40000065") },
   {
@@ -178,7 +178,7 @@ db.test.updateOne(
 ],
 */
 
-// $set // update array of object 👆
+// $set: update array of object 👆
 db.test.updateOne(
   { _id: ObjectId("6406ad63fc13ae5a40000065"), "education.major": "Art" },
   {
@@ -188,7 +188,7 @@ db.test.updateOne(
   }
 );
 
-// $unset // delete primitive data
+// $unset delete primitive data
 db.test.updateOne(
   { _id: ObjectId("6406ad63fc13ae5a40000065") },
   {
@@ -196,7 +196,7 @@ db.test.updateOne(
   }
 );
 
-// $pop 1 // delete last value of array, -1 first value of array
+// $pop: 1 delete last value of array, -1 first value of array
 db.test.updateOne(
   { _id: ObjectId("6406ad63fc13ae5a40000065") },
   {
@@ -204,7 +204,7 @@ db.test.updateOne(
   }
 );
 
-// $pull // delete an specific single value from an array
+// $pull: delete an specific single value from an array
 db.test.updateOne(
   { _id: ObjectId("6406ad63fc13ae5a40000065") },
   {
@@ -212,7 +212,7 @@ db.test.updateOne(
   }
 );
 
-// $pullAll // delete multiple values from an array
+// $pullAll: delete multiple values from an array
 db.test.updateOne(
   { _id: ObjectId("6406ad63fc13ae5a40000065") },
   {
