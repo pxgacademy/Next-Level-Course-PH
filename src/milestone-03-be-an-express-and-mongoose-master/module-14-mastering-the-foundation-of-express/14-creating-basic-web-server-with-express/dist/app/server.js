@@ -13,10 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
+const mongodb_1 = require("../config/mongodb");
 const port = process.env.PORT || 5000;
-let server;
 (() => __awaiter(void 0, void 0, void 0, function* () {
-    server = app_1.default.listen(port, () => {
+    yield mongodb_1.client.connect();
+    console.log("Connected to mongodb");
+    app_1.default.listen(port, () => {
         console.log(`I am listening from ${port}`);
     });
 }))();
