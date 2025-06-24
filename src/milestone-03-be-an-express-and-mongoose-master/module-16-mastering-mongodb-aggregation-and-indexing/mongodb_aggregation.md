@@ -49,3 +49,74 @@ db.test.aggregate([
   { $merge: "test" },
 ]);
 ```
+## $group
+```js
+db.test.aggregate([
+  {
+    $group: { _id: "$gender", count: { $sum: 1 }, email: { $push: "$email" } },
+  },
+]);
+
+db.test.aggregate([
+  {
+    $group: {
+      _id: "$gender",
+      count: { $sum: 1 },
+      fullDocument: { $push: "$$ROOT" }, // it returns full document into an array
+    },
+  },
+]);
+
+db.test.aggregate([
+  {
+    $group: {
+      _id: "$gender",
+      count: { $sum: 1 },
+      fullDocument: { $push: "$$ROOT" },
+    },
+  },
+  {
+    $project: {
+      "fullDocument.name": 1,
+      "fullDocument.email": 1,
+      "fullDocument.phone": 1,
+    },
+  },
+]);
+
+db.test.aggregate([
+  {
+    $group: {
+      _id: null, // it returns whole document together
+      totalSalary: { $sum: "$salary" },
+      maxSalary: { $max: "$salary" },
+      minSalary: { $min: "$salary" },
+      avgSalary: { $avg: "$salary" },
+    },
+  },
+]);
+
+```
+## $project
+```js
+db.test.aggregate([
+  {
+    $group: {
+      _id: null,
+      totalSalary: { $sum: "$salary" },
+      maxSalary: { $max: "$salary" },
+      minSalary: { $min: "$salary" },
+      avgSalary: { $avg: "$salary" },
+    },
+  },
+  {
+    $project: {
+      totalSalary: 1,
+      maxSalary: 1,
+      minSalary: 1,
+      averageSalary: "$avgSalary",
+      rangeBetweenMaxAndMin: { $subtract: ["$maxSalary", "$minSalary"] },
+    },
+  },
+]);
+```
