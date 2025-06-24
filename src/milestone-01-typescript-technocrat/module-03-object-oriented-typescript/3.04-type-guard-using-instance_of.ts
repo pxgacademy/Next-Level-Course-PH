@@ -2,7 +2,10 @@
   // INSTANCEOF GUARD
 
   class Animal {
-    constructor(public name: string, public species: string) {}
+    constructor(
+      public name: string,
+      public species: string
+    ) {}
 
     makeSound() {
       console.log("I can make sound");

@@ -50,7 +50,10 @@
   }
 
   class Rectangle extends Shape {
-    constructor(public height: number, public width: number) {
+    constructor(
+      public height: number,
+      public width: number
+    ) {
       super();
     }
 

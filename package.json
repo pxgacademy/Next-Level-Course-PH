@@ -1,0 +1,24 @@
+{
+  "name": "next-level-course",
+  "version": "1.0.0",
+  "main": "zustand_clone.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pxgacademy/Typescript-Technocrat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pxgacademy/Typescript-Technocrat/issues"
+  },
+  "homepage": "https://github.com/pxgacademy/Typescript-Technocrat#readme",
+  "description": "",
+  "devDependencies": {
+    "prettier": "3.6.0"
+  }
+}
