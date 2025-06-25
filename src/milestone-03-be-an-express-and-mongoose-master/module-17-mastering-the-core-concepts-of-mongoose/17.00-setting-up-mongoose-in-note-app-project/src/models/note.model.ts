@@ -1,13 +1,14 @@
 import { model, Schema } from "mongoose";
+import { NoteType } from "../interfaces/note.interface";
 
-const noteSchema = new Schema(
+const noteSchema = new Schema<NoteType>(
   {
     title: { type: String, required: true, trim: true },
     description: { type: String, required: true },
     pinned: { type: Boolean, default: false },
     category: {
       type: String,
-      enum: ["Personal", "Business", "Study", "Gaming"],
+      enum: ["Personal", "Business", "Study", "Gaming", "Others"],
       default: "Personal",
     },
     tags: {
@@ -22,4 +23,4 @@ const noteSchema = new Schema(
   { timestamps: true }
 );
 
-export const Note = model("Note", noteSchema);
+export const Note = model<NoteType>("Note", noteSchema);
