@@ -18,7 +18,12 @@ noteRouter.post("/create-one", async (req: Request, res: Response) => {
 
 // get all notes
 noteRouter.get("/get-all", async (req: Request, res: Response) => {
-  const notes = await Note.find();
+  // const notes = await Note.find().populate("userId");
+  // const notes = await Note.find().populate({path: "userId", select: "-password"});
+  const notes = await Note.find().populate({
+    path: "userId",
+    select: "name email phone",
+  });
   res.status(200).json(notes);
 });
 

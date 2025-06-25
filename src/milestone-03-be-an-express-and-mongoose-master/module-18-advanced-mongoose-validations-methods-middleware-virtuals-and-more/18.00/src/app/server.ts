@@ -2,7 +2,7 @@ import { Server } from "http";
 import mongoose from "mongoose";
 import app from "./app";
 
-const uri: string = "mongodb://localhost:27017/module_17";
+const uri: string = "mongodb://localhost:27018/module_17";
 
 let server: Server;
 

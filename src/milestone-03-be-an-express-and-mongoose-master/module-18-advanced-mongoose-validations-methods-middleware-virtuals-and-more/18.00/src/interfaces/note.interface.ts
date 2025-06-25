@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export interface NoteType {
   title: string;
   description: string;
@@ -7,4 +9,5 @@ export interface NoteType {
     label: string;
     color: "red" | "blue" | "green" | "gray";
   };
+  userId: Types.ObjectId;
 }
