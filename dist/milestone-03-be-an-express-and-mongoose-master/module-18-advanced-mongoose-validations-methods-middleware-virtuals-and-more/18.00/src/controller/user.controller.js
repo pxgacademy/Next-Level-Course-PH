@@ -38,7 +38,7 @@ userRouter.post("/create-one", (req, res) => __awaiter(void 0, void 0, void 0, f
         const body = yield UserZodSchema.parseAsync(req.body);
         const existingUser = yield user_model_1.User.findOne({ email: body === null || body === void 0 ? void 0 : body.email });
         if (existingUser) {
-            (0, api_response_1.api_response)(res, 409, false, "User already exist");
+            (0, api_response_1.apiResponse)(res, 409, false, "User already exist");
             return;
         }
         /*
@@ -53,20 +53,20 @@ userRouter.post("/create-one", (req, res) => __awaiter(void 0, void 0, void 0, f
         */
         // body.password = await User.hashPasswordByStatic(body.password);
         const user = yield user_model_1.User.create(body);
-        (0, api_response_1.api_response)(res, 201, true, "User created successfully", user);
+        (0, api_response_1.apiResponse)(res, 201, true, "User created successfully", user);
     }
     catch (error) {
-        (0, api_response_1.api_response)(res, 500, false, "Internal server error", error === null || error === void 0 ? void 0 : error.message);
+        (0, api_response_1.apiResponse)(res, 500, false, "Internal server error", error === null || error === void 0 ? void 0 : error.message);
     }
 }));
 // get all users
 userRouter.get("/get-all", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const users = yield user_model_1.User.find();
-        (0, api_response_1.api_response)(res, 200, true, "Successfully got the users", users);
+        (0, api_response_1.apiResponse)(res, 200, true, "Successfully got the users", users);
     }
     catch (error) {
-        (0, api_response_1.api_response)(res, 500, false, "Internal server error", error === null || error === void 0 ? void 0 : error.message);
+        (0, api_response_1.apiResponse)(res, 500, false, "Internal server error", error === null || error === void 0 ? void 0 : error.message);
     }
 }));
 // update a single user
@@ -76,10 +76,10 @@ userRouter.patch("/update/:userId", (req, res) => __awaiter(void 0, void 0, void
     const body = req.body;
     try {
         const result = yield user_model_1.User.findByIdAndUpdate(id, body, { new: true });
-        (0, api_response_1.api_response)(res, 201, true, "Successfully updated the users", result);
+        (0, api_response_1.apiResponse)(res, 201, true, "Successfully updated the users", result);
     }
     catch (error) {
-        (0, api_response_1.api_response)(res, 500, false, "Internal server error", error === null || error === void 0 ? void 0 : error.message);
+        (0, api_response_1.apiResponse)(res, 500, false, "Internal server error", error === null || error === void 0 ? void 0 : error.message);
     }
 }));
 // delete a single user
@@ -89,10 +89,10 @@ userRouter.delete("/delete/:userId", (req, res) => __awaiter(void 0, void 0, voi
     try {
         // const result = await User.findByIdAndDelete(id);
         const result = yield user_model_1.User.findOneAndDelete({ _id: id });
-        (0, api_response_1.api_response)(res, 200, true, "User successfully deleted!", result);
+        (0, api_response_1.apiResponse)(res, 200, true, "User successfully deleted!", result);
     }
     catch (error) {
-        (0, api_response_1.api_response)(res, 500, false, "Internal server error", error === null || error === void 0 ? void 0 : error.message);
+        (0, api_response_1.apiResponse)(res, 500, false, "Internal server error", error === null || error === void 0 ? void 0 : error.message);
     }
 }));
 exports.default = userRouter;

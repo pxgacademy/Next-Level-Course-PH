@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import { User } from "../models/user.model";
-import { api_response } from "../components/api_response";
+import { apiResponse } from "../components/api_response";
 import { z } from "zod";
 import bcrypt from "bcryptjs";
 
@@ -33,7 +33,7 @@ userRouter.post("/create-one", async (req: Request, res: Response) => {
 
     const existingUser = await User.findOne({ email: body?.email });
     if (existingUser) {
-      api_response(res, 409, false, "User already exist");
+      apiResponse(res, 409, false, "User already exist");
       return;
     }
 
@@ -52,9 +52,9 @@ userRouter.post("/create-one", async (req: Request, res: Response) => {
     // body.password = await User.hashPasswordByStatic(body.password);
     const user = await User.create(body);
 
-    api_response(res, 201, true, "User created successfully", user);
+    apiResponse(res, 201, true, "User created successfully", user);
   } catch (error: any) {
-    api_response(res, 500, false, "Internal server error", error?.message);
+    apiResponse(res, 500, false, "Internal server error", error?.message);
   }
 });
 
@@ -62,9 +62,9 @@ userRouter.post("/create-one", async (req: Request, res: Response) => {
 userRouter.get("/get-all", async (req: Request, res: Response) => {
   try {
     const users = await User.find();
-    api_response(res, 200, true, "Successfully got the users", users);
+    apiResponse(res, 200, true, "Successfully got the users", users);
   } catch (error: any) {
-    api_response(res, 500, false, "Internal server error", error?.message);
+    apiResponse(res, 500, false, "Internal server error", error?.message);
   }
 });
 
@@ -75,9 +75,9 @@ userRouter.patch("/update/:userId", async (req: Request, res: Response) => {
 
   try {
     const result = await User.findByIdAndUpdate(id, body, { new: true });
-    api_response(res, 201, true, "Successfully updated the users", result);
+    apiResponse(res, 201, true, "Successfully updated the users", result);
   } catch (error: any) {
-    api_response(res, 500, false, "Internal server error", error?.message);
+    apiResponse(res, 500, false, "Internal server error", error?.message);
   }
 });
 
@@ -87,9 +87,9 @@ userRouter.delete("/delete/:userId", async (req: Request, res: Response) => {
   try {
     // const result = await User.findByIdAndDelete(id);
     const result = await User.findOneAndDelete({ _id: id });
-    api_response(res, 200, true, "User successfully deleted!", result);
+    apiResponse(res, 200, true, "User successfully deleted!", result);
   } catch (error: any) {
-    api_response(res, 500, false, "Internal server error", error?.message);
+    apiResponse(res, 500, false, "Internal server error", error?.message);
   }
 });
 
