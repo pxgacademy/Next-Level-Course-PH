@@ -1,0 +1,15 @@
+#root {
+  max-width: 1280px;
+  padding: 2rem;
+}
+
+.parent {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
