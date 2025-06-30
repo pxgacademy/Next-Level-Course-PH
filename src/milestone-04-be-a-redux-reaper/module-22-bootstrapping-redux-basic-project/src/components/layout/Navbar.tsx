@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className="flex items-center gap-x-3">
         <Link to="/tasks">Task</Link>
         <Link to="/users">User</Link>
-        <Link to="/redux">Redux</Link>
+        <Link to="/redux-counter">Counter</Link>
         <Link to="/hold-button">HB</Link>
       </div>
       <ModeToggle />

@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { Button } from "../components/ui/button";
 import SectionContainer from "@/components/SectionContainer";
 
-const Redux = () => {
+const ReduxCounter = () => {
   const dispatch = useAppDispatch();
   const { count } = useAppSelector((state) => state.counter);
 
@@ -33,4 +33,4 @@ const Redux = () => {
   );
 };
 
-export default Redux;
+export default ReduxCounter;
