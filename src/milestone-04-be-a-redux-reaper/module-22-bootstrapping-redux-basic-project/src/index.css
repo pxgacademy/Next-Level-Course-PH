@@ -118,3 +118,5 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* @apply bg-[#040D12] text-foreground; */
