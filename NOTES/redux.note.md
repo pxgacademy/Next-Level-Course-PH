@@ -1,7 +1,6 @@
 
 # React State to Redux
 
-
 ## ১. State কী?
 
 State হলো React এর একটি মৌলিক ধারণা যা কোনো কম্পোনেন্টের ডেটা বা স্টেটাস ধরে রাখে। এটি কম্পোনেন্টের অভ্যন্তরীণ ডেটা স্টোরেজ হিসেবে কাজ করে এবং UI রেন্ডারিং নিয়ন্ত্রণ করে। State পরিবর্তন হলে React স্বয়ংক্রিয়ভাবে কম্পোনেন্টটি পুনরায় রেন্ডার করে।
@@ -9,7 +8,7 @@ State হলো React এর একটি মৌলিক ধারণা যা
 **উদাহরণ:**
 একটি সাধারণ কাউন্টার কম্পোনেন্ট:
 
-
+```jsx
 import React, { useState } from 'react';
 
 function Counter() {
@@ -24,7 +23,7 @@ function Counter() {
 }
 
 export default Counter;
-
+```
 
 এখানে `count` হলো State ভ্যারিয়েবল, এবং `setCount` ফাংশনটি এটি আপডেট করে।
 
@@ -652,4 +651,3 @@ root.render(<App />);
 
 React এর State Management থেকে শুরু করে Redux পর্যন্ত আমরা বিভিন্ন ধারণা এবং তাদের ব্যবহার দেখলাম। `useState` এবং `useReducer` ছোট থেকে মাঝারি অ্যাপ্লিকেশনের জন্য যথেষ্ট, তবে বৃহৎ অ্যাপ্লিকেশনের জন্য Redux এবং Typescript এর মতো টুল ব্যবহার করা উচিত। Signals এর মতো নতুন প্রযুক্তি ভবিষ্যতে State Management কে আরো দক্ষ করবে।
 
-</xaiArtifact>
