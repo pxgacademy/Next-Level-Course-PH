@@ -1,16 +1,19 @@
 import SectionContainer from "@/components/SectionContainer";
-import TaskCard from "@/components/TaskCard";
+import AddTaskModal from "@/components/task/AddTaskModal";
+import TaskCard from "@/components/task/TaskCard";
 import { selectTasks } from "@/redux/features/task/taskSlice";
 import { useAppSelector } from "@/redux/hook";
 import type { TaskT } from "@/types";
 
 const Task = () => {
   const tasks = useAppSelector(selectTasks);
-  console.log(tasks);
 
   return (
     <SectionContainer>
-      <div className="space-y-2.5">
+      <div>
+        <AddTaskModal />
+      </div>
+      <div className="space-y-2.5 mt-6">
         {tasks?.map((task: TaskT) => (
           <TaskCard key={task.id} task={task} />
         ))}

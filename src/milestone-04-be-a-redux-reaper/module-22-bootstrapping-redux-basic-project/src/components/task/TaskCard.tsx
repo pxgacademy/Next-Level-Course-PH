@@ -1,8 +1,8 @@
 import { Trash2 } from "lucide-react";
-import { Button } from "./ui/button";
-import { Checkbox } from "./ui/checkbox";
 import type { TaskT } from "@/types";
 import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
+import { Checkbox } from "../ui/checkbox";
 
 const TaskCard = ({ task }: { task: TaskT }) => {
   return (
