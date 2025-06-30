@@ -4,13 +4,45 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface InitialState {
   tasks: TaskT[];
-  filter: "all" | "heigh" | "medium" | "low";
+  filter: "All" | "Heigh" | "Medium" | "Low";
 }
 
 const initialState: InitialState = {
   tasks: [
     {
-      id: "",
+      id: "1aKlmG5p0r",
+      title: "",
+      description: "",
+      dueDate: "",
+      isCompleted: false,
+      priority: "Low",
+    },
+    {
+      id: "1aKlmG5p0r",
+      title: "",
+      description: "",
+      dueDate: "",
+      isCompleted: false,
+      priority: "Low",
+    },
+    {
+      id: "1aKlmG5p0r",
+      title: "",
+      description: "",
+      dueDate: "",
+      isCompleted: false,
+      priority: "Low",
+    },
+    {
+      id: "1aKlmG5p0r",
+      title: "",
+      description: "",
+      dueDate: "",
+      isCompleted: false,
+      priority: "Low",
+    },
+    {
+      id: "1aKlmG5p0r",
       title: "",
       description: "",
       dueDate: "",
@@ -18,7 +50,7 @@ const initialState: InitialState = {
       priority: "Low",
     },
   ],
-  filter: "all",
+  filter: "All",
 };
 
 const taskSlice = createSlice({

@@ -4,5 +4,5 @@ export interface TaskT {
   description: string;
   dueDate: string;
   isCompleted: boolean;
-  priority: "Heigh" | "Medius" | "Low";
+  priority: "Heigh" | "Medium" | "Low";
 }
